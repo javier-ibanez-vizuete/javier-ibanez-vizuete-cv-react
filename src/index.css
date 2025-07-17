@@ -1,12 +1,16 @@
 :root {
-	--bg-color: ;
-	--accent-bg-color: ;
-	--primary-text-color: ;
-	--secondary-text-color: ;
-	--links-text-color: ;
-	--btn-primary-color: ;
-	--btn-secondary-color: ;
-	--btn-xtra-color: ;
+	--bg-color: #f5f5f0;
+	--accent-bg-color: #ffffff;
+	--primary-text-color: #003243;
+	--secondary-text-color: #ffffff;
+	--links-text-color: #ff4400;
+
+	--btn-primary-color: #ff4400;
+	--btn-secondary-color: #003243;
+	--btn-xtra-color: #eeeeea;
+
+	--shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.1);
+	--shadow-hover: 0 6px 14px rgba(0, 0, 0, 0.2);
 
 	--font-size-html: 15px;
 
@@ -17,8 +21,8 @@
 	--spacing-2xl: 36px;
 	--spacing-4xl: 60px;
 
-	--border-radius-card: 4px;
-	--border-radius-btn: 32px;
+	--border-radius-card: 12px;
+	--border-radius-btn: 1000px; /* pill style */
 
 	--container-width: 95%;
 }

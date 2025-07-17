@@ -1,6 +1,12 @@
 #root {
+	display: flex;
+	flex-direction: column;
 	flex: 1;
-	background-color: brown;
+	background-color: rgb(205, 129, 129);
+}
+
+.app-container {
+	flex: 1;
 }
 
 /* ---Tablets */
