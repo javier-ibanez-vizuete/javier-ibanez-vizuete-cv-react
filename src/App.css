@@ -1,3 +1,25 @@
 #root {
-  flex: 1;
+	flex: 1;
+	background-color: brown;
+}
+
+/* ---Tablets */
+@media (width >= 768px) {
+	#root {
+		background-color: aquamarine;
+	}
+}
+
+/* ---Portatiles */
+@media (width >= 1024px) {
+	#root {
+		background-color: rgb(69, 69, 253);
+	}
+}
+
+/* ---Pantallas Escritorio */
+@media (width >= 1440px) {
+	#root {
+		background-color: blanchedalmond;
+	}
 }
