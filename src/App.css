@@ -22,6 +22,10 @@ header {
 	gap: 1rem;
 }
 
+main {
+	flex: 1;
+}
+
 /* ---Tablets */
 @media (width >= 768px) {
 	#root {
