@@ -9,14 +9,20 @@ export const CV_DATA = {
 		summary:
 			"Desarrollador frontend con experiencia en liderazgo de equipos, optimización de procesos y desarrollo web con tecnologías modernas. Apasionado por la programación y la mejora continua.",
 	},
-	experience: [
+	experiences: [
 		{
 			position: "Frontend Developer",
 			company: "Rocket418",
 			period: "Diciembre 2024 - Mayo 2025",
 			location: "Madrid, España",
-			description:
-				"Desarrollo de interfaces con React y Chakra UI para plataformas como UniformeAzul.com. Uso de Redux, React Hook Form, GitHub y metodologías ágiles.",
+			description: [
+				"Desarrollo de la interfaz de usuario para el proyecto UniformeAzul.com , la academia más grande de España para opositores a la Policía.",
+				"Implementación de componentes React reutilizables y rutas con React Router",
+				"Gestión del estado global con Redux.js y React Hooks (useState, useEffect).",
+				"Creación de formularios dinámicos con React Hook Form y validaciones personalizadas.",
+				"Uso de Chakra UI para garantizar un diseño consistente y accesible.",
+				"Colaboración con el equipo de diseño y backend para optimizar la experiencia de usuario y mejorar la performance",
+			],
 		},
 		{
 			position: "Director",
