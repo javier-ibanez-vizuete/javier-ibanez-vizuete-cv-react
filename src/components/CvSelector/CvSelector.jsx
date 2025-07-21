@@ -5,6 +5,7 @@ export const CvSelector = ({ setCvView }) => {
 	return (
 		<section className="cv-selector-modal">
 			<h1 className="title">Bienvenido al Curriculum de Javier Ibáñez Vizuete</h1>
+			<p className="subtitle">¿Que Curriculum quiere visualizar?</p>
 			<div className="cv-selector-btns-container">
 				{Object.entries(AppTabs).map(([property, value]) => {
 					return (
