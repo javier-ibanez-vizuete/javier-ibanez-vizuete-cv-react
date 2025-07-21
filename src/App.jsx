@@ -5,6 +5,7 @@ import { AppTabs } from "./components/CvSelector/AppTabs";
 import { CurriculumTradicional } from "./components/CurriculumTraditional/CurriculumTradicional";
 import { CurriculumInteractive } from "./components/CurriculumInteractive/CurriculumInteractive";
 import { CV_DATA } from "./utils/CV_DATA";
+import { GridBackground } from "./components/GridBackground/GridBackground";
 
 export const App = () => {
 	const [cvView, setCvView] = useState(null);
@@ -12,6 +13,7 @@ export const App = () => {
 
 	return (
 		<div className="app-container container">
+			<GridBackground />
 			{!cvView && <CvSelector setCvView={setCvView} />}
 			{cvView === AppTabs.CV_TRADICIONAL && <CurriculumTradicional cvData={cvData} />}
 			{cvView === AppTabs.CV_INTERACTIVE && <CurriculumInteractive />}
