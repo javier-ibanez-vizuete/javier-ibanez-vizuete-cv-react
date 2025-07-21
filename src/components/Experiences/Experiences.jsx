@@ -12,11 +12,13 @@ export const Experiences = ({ cvData }) => {
 		<section className="experience-section">
 			<h2 className="title">Experiencia</h2>
 			<ExperiencesNav experienceTab={experienceTab} setExperienceTab={setExperienceTab} />
-			{experiences
-				.filter(({ position }) => position === experienceTab)
-				.map((experience) => {
-					return <Experience key={experience.company} experience={experience} />;
-				})}
+			<div className="experiences-container">
+				{experiences
+					.filter(({ position }) => position === experienceTab)
+					.map((experience) => {
+						return <Experience key={experience.company} experience={experience} />;
+					})}
+			</div>
 		</section>
 	);
 };
