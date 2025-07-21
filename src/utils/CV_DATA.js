@@ -9,30 +9,46 @@ export const CV_DATA = {
 		summary:
 			"Desarrollador frontend con experiencia en liderazgo de equipos, optimización de procesos y desarrollo web con tecnologías modernas. Apasionado por la programación y la mejora continua.",
 	},
-	experience: [
+	experiences: [
 		{
 			position: "Frontend Developer",
 			company: "Rocket418",
 			period: "Diciembre 2024 - Mayo 2025",
 			location: "Madrid, España",
-			description:
-				"Desarrollo de interfaces con React y Chakra UI para plataformas como UniformeAzul.com. Uso de Redux, React Hook Form, GitHub y metodologías ágiles.",
+			responsabilities: [
+				"Desarrollo de la interfaz de usuario para el proyecto UniformeAzul.com , la academia más grande de España para opositores a la Policía.",
+				"Implementación de componentes React reutilizables y rutas con React Router",
+				"Gestión del estado global con Redux.js y React Hooks (useState, useEffect).",
+				"Creación de formularios dinámicos con React Hook Form y validaciones personalizadas.",
+				"Uso de Chakra UI para garantizar un diseño consistente y accesible.",
+				"Colaboración con el equipo de diseño y backend para optimizar la experiencia de usuario y mejorar la performance",
+			],
 		},
 		{
 			position: "Director",
 			company: "Restaurante SAONA",
 			period: "oct 2020 - mar 2024",
 			location: "Madrid, España",
-			description:
-				"Gestión de equipo de 22 personas, aumento del beneficio mensual en un 15 % mediante control de costes y coordinación de eventos de alto perfil.",
+			responsabilities: [
+				"Supervisión de un equipo de 22 personas (camareros y cocineros) en el restaurante SAONA Plaza de España.",
+				"Cumplimiento de objetivos de ventas mensuales y generación de incentivos, incrementando el beneficio en un 15 % interanual.",
+				"Implementación de controles de costes y gestión de budgets, reduciendo desperdicios y optimizando recursos. ",
+				"Coordinación de eventos especiales y promociones, mejorando la satisfacción del cliente y la imagen de marca.",
+				"Resolución de incidencias operativas y administrativas, garantizando un servicio fluido y de alta calidad.",
+			],
 		},
 		{
 			position: "Supervisor",
 			company: "Forge Restaurant & Club",
 			period: "sep 2017 - jun 2018",
 			location: "Londres, Reino Unido",
-			description:
-				"Responsable de la supervisión de personal, formación de nuevos empleados y redacción de informes de rendimiento semanales.",
+			responsabilities: [
+				"Liderazgo de personal en restaurante y discoteca, asegurando altos estándares de atención y servicio.",
+				"Coordinación de eventos VIP en el Reservado, gestionando protocolo y atención a clientes premium.",
+				"Capacitación de camareros nuevos en procedimientos operativos y normas de seguridad alimentaria.",
+				"Monitoreo de inventarios y reposición de productos, evitando faltantes en momentos críticos.",
+				"Elaboración de reportes semanales de rendimiento y sugerencias de mejora al director de sala.",
+			],
 		},
 	],
 	education: [
