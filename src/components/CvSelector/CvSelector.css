@@ -42,7 +42,7 @@
 }
 
 .cv-selector-btn.interactive:hover {
-	background-color: #e63e00;
+	background-color: var(--btn-primary-color-hover);
 	box-shadow: var(--shadow-hover);
 	transform: translateY(-1px);
 }
