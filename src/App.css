@@ -1,6 +1,19 @@
 #root {
+	display: flex;
+	flex-direction: column;
 	flex: 1;
-	background-color: brown;
+
+}
+
+.app-container {
+	display: flex;
+	flex-direction: column;
+	
+	flex: 1;
+}
+
+.title, .subtitle {
+	text-align: center;
 }
 
 /* ---Tablets */

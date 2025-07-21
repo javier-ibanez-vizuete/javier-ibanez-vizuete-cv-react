@@ -1,15 +1,18 @@
+import { useState } from "react";
 import "./App.css";
+import { CvSelector } from "./components/CvSelector/CvSelector";
+import { AppTabs } from "./components/CvSelector/AppTabs";
+import { CurriculumTradicional } from "./components/CurriculumTraditional/CurriculumTradicional";
+import { CurriculumInteractive } from "./components/CurriculumInteractive/CurriculumInteractive";
 
 export const App = () => {
+	const [cvView, setCvView] = useState(null);
+
 	return (
-		<>
-			<h1>Proyecto Javier Ibáñez Vizuete CV React</h1>
-			<h2>Proyecto Javier Ibáñez Vizuete CV React</h2>
-			<h3>Proyecto Javier Ibáñez Vizuete CV React</h3>
-			<h4>Proyecto Javier Ibáñez Vizuete CV React</h4>
-			<h5>Proyecto Javier Ibáñez Vizuete CV React</h5>
-			<h6>Proyecto Javier Ibáñez Vizuete CV React</h6>
-			<p>Proyecto Javier Ibáñez Vizuete CV React</p>
-		</>
+		<div className="app-container container">
+			{!cvView && <CvSelector setCvView={setCvView} />}
+			{cvView === AppTabs.CV_TRADICIONAL && <CurriculumTradicional />}
+			{cvView === AppTabs.CV_INTERACTIVE && <CurriculumInteractive />}
+		</div>
 	);
 };
