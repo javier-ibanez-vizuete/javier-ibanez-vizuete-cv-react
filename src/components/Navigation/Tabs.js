@@ -1,6 +1,6 @@
 export const Tabs = {
 	PROFILE: "Perfil",
 	EXPERIENCE: "Experiencia",
-	EDUCATION: "Formacion",
+	EDUCATION: "Formación",
 	CONTACT: "Contacto",
 };

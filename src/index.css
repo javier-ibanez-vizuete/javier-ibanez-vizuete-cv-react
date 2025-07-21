@@ -21,8 +21,8 @@
 	--spacing-2xl: 36px;
 	--spacing-4xl: 60px;
 
-	--border-radius-card: 12px;
-	--border-radius-btn: 1000px; /* pill style */
+	--border-radius-card: 4px;
+	--border-radius-btn: 1000px;
 
 	--container-width: 95%;
 }

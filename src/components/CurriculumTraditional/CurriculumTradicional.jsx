@@ -10,7 +10,7 @@ export const CurriculumTradicional = () => {
 		<div className="curriculum-tradicional-container">
 			<header>
 				<Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
-				<h2>Javier Ibáñez Vizuete</h2>
+				<h2 className="title">Javier Ibáñez Vizuete</h2>
 			</header>
 			<main>
 				{activeTab === Tabs.PROFILE && <h3>PERFIL</h3>}
