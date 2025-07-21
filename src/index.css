@@ -6,7 +6,9 @@
 	--links-text-color: #ff4400;
 
 	--btn-primary-color: #ff4400;
+	--btn-primary-color-hover: ;
 	--btn-secondary-color: #003243;
+	--btn-secondary-color-hover: #00212e;
 	--btn-xtra-color: #eeeeea;
 
 	--shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -88,6 +90,11 @@ input {
 
 img {
 	width: 100%;
+}
+
+a {
+	text-decoration: none;
+	color: unset;
 }
 
 .container {
