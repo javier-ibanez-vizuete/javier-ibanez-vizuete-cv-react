@@ -2,17 +2,17 @@
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-
 }
 
 .app-container {
 	display: flex;
 	flex-direction: column;
-	
+
 	flex: 1;
 }
 
-.title, .subtitle {
+.title,
+.subtitle {
 	text-align: center;
 }
 
@@ -29,20 +29,17 @@ main {
 /* ---Tablets */
 @media (width >= 768px) {
 	#root {
-		background-color: aquamarine;
 	}
 }
 
 /* ---Portatiles */
 @media (width >= 1024px) {
 	#root {
-		background-color: rgb(69, 69, 253);
 	}
 }
 
 /* ---Pantallas Escritorio */
 @media (width >= 1440px) {
 	#root {
-		background-color: blanchedalmond;
 	}
 }
