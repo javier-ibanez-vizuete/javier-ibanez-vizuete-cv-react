@@ -16,6 +16,12 @@
 	text-align: center;
 }
 
+header {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
 /* ---Tablets */
 @media (width >= 768px) {
 	#root {
