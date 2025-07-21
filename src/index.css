@@ -6,10 +6,10 @@
 	--links-text-color: #ff4400;
 
 	--btn-primary-color: #ff4400;
-	--btn-primary-color-hover: ;
+	--btn-primary-color-hover: #eb4306;
 	--btn-secondary-color: #003243;
 	--btn-secondary-color-hover: #00212e;
-	--btn-xtra-color: #eeeeea;
+	--btn-xtra-color: rgba(0, 50, 67, 0.2);
 
 	--shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.2);
 	--shadow-hover: 0 6px 14px rgba(0, 0, 0, 0.4);

@@ -1,26 +1,24 @@
 .navigation {
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-xs);
+	display: flex;
+	justify-content: center;
+	gap: var(--spacing-xs);
 
-    padding: var(--spacing-xs);
+	padding: var(--spacing-xs);
 }
 
 .tab {
-    flex: 1;
-
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border: none;
-    cursor: pointer;
-    background-color: var(--bg-color);
-    border-radius: var(--border-radius-card);
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border: none;
+	cursor: pointer;
+	background: none;
+	border-radius: var(--border-radius-card);
 }
 
 .tab:hover {
-    background-color: var(--btn-xtra-color);
+	background-color: var(--btn-xtra-color);
 }
 
 .tab.active {
-background-color: var(--btn-primary-color);
-box-shadow: inset var(--shadow-soft);
+	background-color: var(--btn-primary-color);
+	box-shadow: inset var(--shadow-soft);
 }
