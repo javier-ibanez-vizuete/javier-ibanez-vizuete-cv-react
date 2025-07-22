@@ -6,7 +6,7 @@ export const Skills = ({ skills }) => {
 	return (
 		<ul className="skills-list-container">
 			{skills.map((skill, index) => (
-				<li key={`${skill}-${index}`}>{skill}</li>
+				<li key={`${skill}-${index}`} className="skill-list-item">{skill}</li>
 			))}
 		</ul>
 	);
