@@ -16,8 +16,6 @@ export const Education = ({ cvData }) => {
 			<h2 className="title">Formación</h2>
 			<EducationNav educationTab={educationTab} setEducationTab={setEducationTab} />
 			{educationTab === EducationTabs.EDUCATION && <EducationList cvData={cvData} />}
-			{/* HE ACABADO CON FORMACION ACADEMICA... HAY QUE EMPEZAR CON HABILIDADES TECNICAS... 
-			YA ESTA TODO COMMITEADO Y PUSHEADO */}
 			{educationTab === EducationTabs.SKILLS && <Skills skills={skills} />}
 			{educationTab === EducationTabs.DEV_LENGUAGES && <DevLanguages devLanguages={devLanguages} />}
 			{educationTab === EducationTabs.LANGUAGES && <div>Idiomas</div>}
