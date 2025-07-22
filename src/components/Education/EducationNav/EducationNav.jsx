@@ -5,9 +5,6 @@ export const EducationNav = ({ educationTab, setEducationTab }) => {
 	return (
 		<div className="navigation">
 			{Object.entries(EducationTabs).map(([property, value]) => {
-                
-				console.log("Property", property);
-				console.log("value", value);
 				return (
 					<button
 						key={property}
