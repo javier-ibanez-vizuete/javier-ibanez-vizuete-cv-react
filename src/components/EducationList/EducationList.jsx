@@ -14,7 +14,6 @@ export const EducationList = ({ cvData }) => {
 				<div>
 					{technologies.map((technology) => {
 						const { name, level } = technology;
-
 						return <CircularProgressBar key={`${name}-${level}`} name={name} level={level} />;
 					})}
 				</div>

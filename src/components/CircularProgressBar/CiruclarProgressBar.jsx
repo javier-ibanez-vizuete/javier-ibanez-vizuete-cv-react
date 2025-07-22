@@ -15,11 +15,8 @@ export const CircularProgressBar = ({ name, level }) => {
 		case "Basico":
 			percentage = 25;
 			break;
-		case undefined:
-			percentage = 0;
-			break;
 		default:
-			percentage = 50;
+			percentage = 75;
 			break;
 	}
 
