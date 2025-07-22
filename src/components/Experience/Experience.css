@@ -6,7 +6,7 @@
 }
 
 .experience-responsabilities-container {
-    margin-top: 1rem;
+	margin-top: 1rem;
 }
 
 .experience-responsabilities-container,
@@ -14,4 +14,14 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.8rem;
+}
+
+@media (width >= 768px) {
+	.experience-container {
+		gap: 1rem;
+	}
+	.experience-responsabilities-container,
+	.experience-responsabilities-container > ul {
+		gap: 1.2rem;
+	}
 }

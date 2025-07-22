@@ -9,7 +9,7 @@ export const ContactSection = ({ cvData, form, error, onFormSubmit, onDeleteForm
 					type="text"
 					name="contactName"
 					id="contactName"
-					placeholder="Introduce tu nombre completo"
+					placeholder="Introduce tu nombre completo..."
 					minLength={4}
 					maxLength={40}
 					value={form.contactName}
@@ -39,7 +39,7 @@ export const ContactSection = ({ cvData, form, error, onFormSubmit, onDeleteForm
 					onChange={onInputChange}
 				>
 					<option value="" disabled>
-						Elige una opcion
+						Elige una opcion...
 					</option>
 					<option value="job-offer">Oferta de empleo</option>
 					<option value="interview-invitation">Invitación a entrevista</option>
@@ -54,12 +54,13 @@ export const ContactSection = ({ cvData, form, error, onFormSubmit, onDeleteForm
 					id="contactDescription"
 					rows={5}
 					cols={30}
-					placeholder="Escribe un mensaje adicional"
+					placeholder="Escribe un mensaje adicional..."
 					maxLength={300}
 					value={form.contactDescription}
 					onChange={onInputChange}
 				/>
 			</div>
+			<small className="empty-list-text">(*)Todos los campos son obligatorios</small>
 			<div className="contact-section-btns-container">
 				<button onClick={onFormSubmit} className="btn primary-btn">
 					Enviar correo

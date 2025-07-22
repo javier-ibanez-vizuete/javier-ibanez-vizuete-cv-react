@@ -33,7 +33,8 @@ header {
 	justify-content: center;
 	gap: var(--spacing-xs);
 
-	padding: var(--spacing-xs);
+	padding: var(--spacing-sm) 0;
+	max-width: 1024px;
 }
 
 .tab {
@@ -44,10 +45,6 @@ header {
 	border-radius: var(--border-radius-card);
 	color: var(--primary-text-color);
 	font-weight: bold;
-}
-
-.tab:hover {
-	background-color: var(--btn-xtra-color);
 }
 
 .tab.active {
@@ -69,19 +66,9 @@ header {
 	color: var(--primary-text-color);
 }
 
-.primary-btn:hover {
-	background-color: var(--btn-primary-color-hover);
-	box-shadow: inset var(--shadow-hover);
-}
-
 .secondary-btn {
 	background-color: var(--btn-secondary-color);
 	color: var(--secondary-text-color);
-}
-
-.secondary-btn:hover {
-	background-color: var(--btn-secondary-color-hover);
-	box-shadow: inset var(--shadow-hover);
 }
 
 .error-text {
@@ -99,14 +86,33 @@ main {
 
 /* ---Tablets */
 @media (width >= 768px) {
-	#root {
+	header {
+		gap: 2rem;
+	}
+
+	header .navigation {
+		gap: var(--spacing-sm);
+
+		padding: var(--spacing-2xl);
+	}
+
+	.tab:hover {
+		background-color: var(--btn-xtra-color);
+	}
+
+	.primary-btn:hover {
+		background-color: var(--btn-primary-color-hover);
+		box-shadow: inset var(--shadow-hover);
+	}
+
+	.secondary-btn:hover {
+		background-color: var(--btn-secondary-color-hover);
+		box-shadow: inset var(--shadow-hover);
 	}
 }
 
 /* ---Portatiles */
 @media (width >= 1024px) {
-	#root {
-	}
 }
 
 /* ---Pantallas Escritorio */

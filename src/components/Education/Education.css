@@ -1,5 +1,16 @@
 .education-section {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.education-section > .navigation button {
+	flex-shrink: 1;
+}
+
+/* ---Tablets */
+@media (width >= 768px) {
+	.education-section {
+		gap: 1.5rem;
+	}
 }
