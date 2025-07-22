@@ -1,0 +1,10 @@
+.dev-language-container {
+	display: grid;
+    justify-items: center;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1.5rem;
+}
+
+.dev-language-container :last-child {
+	grid-column: 1 /-1;
+}
