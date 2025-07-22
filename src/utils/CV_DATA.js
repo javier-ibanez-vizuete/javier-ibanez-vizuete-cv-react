@@ -81,7 +81,7 @@ export const CV_DATA = {
 	],
 	languages: [
 		{ name: "Español", level: "Nativo" },
-		{ name: "Inglés", level: "Alto (2 años en Reino Unido)" },
+		{ name: "Inglés", level: "Avanzado (2 años en Reino Unido)" },
 	],
 	devLanguages: [
 		{ name: "JavaScript", level: "Intermedio" },
