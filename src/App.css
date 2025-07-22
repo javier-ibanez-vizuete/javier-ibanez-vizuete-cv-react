@@ -42,6 +42,8 @@ header {
 	cursor: pointer;
 	background: none;
 	border-radius: var(--border-radius-card);
+	color: var(--primary-text-color);
+	font-weight: bold;
 }
 
 .tab:hover {
@@ -51,6 +53,44 @@ header {
 .tab.active {
 	background-color: var(--btn-primary-color);
 	box-shadow: inset var(--shadow-soft);
+	color: var(--secondary-text-color);
+}
+.btn {
+	border: none;
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border-radius: var(--border-radius-card);
+	box-shadow: inset var(--shadow-soft);
+	transition-duration: 0.2s;
+	font-weight: bold;
+}
+
+.primary-btn {
+	background-color: var(--btn-primary-color);
+	color: var(--primary-text-color);
+}
+
+.primary-btn:hover {
+	background-color: var(--btn-primary-color-hover);
+	box-shadow: inset var(--shadow-hover);
+}
+
+.secondary-btn {
+	background-color: var(--btn-secondary-color);
+	color: var(--secondary-text-color);
+}
+
+.secondary-btn:hover {
+	background-color: var(--btn-secondary-color-hover);
+	box-shadow: inset var(--shadow-hover);
+}
+
+.error-text {
+	font-weight: bolder;
+	color: red;
+}
+
+.actived-select {
+	color: var(--primary-text-color);
 }
 
 main {

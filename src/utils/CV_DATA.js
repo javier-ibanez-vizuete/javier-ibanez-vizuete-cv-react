@@ -4,7 +4,7 @@ export const CV_DATA = {
 		title: "Frontend Developer",
 		location: "Madrid, España",
 		email: "javieriibanezvizuete@gmail.com",
-		linkedin: "www.linkedin.com/in/javier-ibanez-vizuete",
+		linkedin: "https://www.linkedin.com/in/javier-ibanez-vizuete/",
 		portfolio: "https://nientiendo-portfolio.netlify.app",
 		summary:
 			"Desarrollador frontend con experiencia en liderazgo de equipos, optimización de procesos y desarrollo web con tecnologías modernas. Apasionado por la programación y la mejora continua.",

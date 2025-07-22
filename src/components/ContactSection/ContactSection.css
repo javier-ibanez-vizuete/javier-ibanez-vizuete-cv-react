@@ -1,0 +1,25 @@
+.contact-section {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.contact-section-label-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.contact-section-label-container input,
+.contact-section-label-container select,
+.contact-section-label-container textarea {
+	background-color: transparent;
+	border: 1px solid var(--btn-secondary-color);
+	border-radius: var(--border-radius-card);
+}
+
+.contact-section-btns-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}

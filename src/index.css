@@ -11,8 +11,8 @@
 	--btn-secondary-color-hover: #00212e;
 	--btn-xtra-color: rgba(0, 50, 67, 0.2);
 
-	--shadow-soft: 0 4px 10px rgba(0, 0, 0, 0.2);
-	--shadow-hover: 0 6px 14px rgba(0, 0, 0, 0.4);
+	--shadow-soft: 0 0px 10px rgba(0, 0, 0, 0.2);
+	--shadow-hover: 0 0px 14px rgba(0, 0, 0, 0.4);
 
 	--font-size-html: 15px;
 
@@ -73,18 +73,47 @@ figcaption,
 blockquote,
 dl,
 dd,
-body {
+body,
+span,
+small {
 	margin: 0;
 	padding: 0;
+	color: var(--primary-text-color);
 }
 
 ul {
 	list-style-type: none;
 }
 
-input {
+input, textarea {
+	color: var(--primary-text-color);
+}
+
+input,
+textarea,
+select {
 	outline: none;
 	padding: var(--spacing-xs);
+	border: none;
+}
+
+select {
+	color: #888;
+}
+
+select > option {
+	color: var(--primary-text-color);
+	background-color: var(--bg-color);
+	backdrop-filter: blur(1px);
+}
+
+select > option[disabled] {
+	color: #888;
+}
+
+select > option:hover {
+	color: var(--secondary-text-color);
+	background-color: var(--btn-primary-color);
 }
 
 img {

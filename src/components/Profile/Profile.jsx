@@ -27,7 +27,7 @@ export const Profile = ({ cvData }) => {
 			<div className="profile-section-linkedin-link">
 				<a href={cvData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
 					<div className="linkedin-logo-container">
-						<picture loading="lazy">
+						<picture>
 							<source src={linkedInLogoAvif} type="image/png" />
 							<source src={linkedInLogoWebp} type="image/png" />
 							<source src={linkedInLogoPng} type="image/png" />

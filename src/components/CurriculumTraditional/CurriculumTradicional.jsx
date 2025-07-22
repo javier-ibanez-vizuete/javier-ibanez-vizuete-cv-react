@@ -5,8 +5,9 @@ import { Tabs } from "../Navigation/Tabs";
 import { Profile } from "../Profile/Profile";
 import { Experiences } from "../Experiences/Experiences";
 import { Education } from "../Education/Education";
+import { ContactSection } from "../ContactSection/ContactSection";
 
-export const CurriculumTradicional = ({ cvData }) => {
+export const CurriculumTradicional = ({ cvData, form, error, onFormSubmit, onDeleteForm, onInputChange }) => {
 	const [activeTab, setActiveTab] = useState(Tabs.PROFILE);
 
 	return (
@@ -19,7 +20,16 @@ export const CurriculumTradicional = ({ cvData }) => {
 				{activeTab === Tabs.PROFILE && <Profile cvData={cvData} />}
 				{activeTab === Tabs.EXPERIENCE && <Experiences cvData={cvData} />}
 				{activeTab === Tabs.EDUCATION && <Education cvData={cvData} />}
-				{activeTab === Tabs.CONTACT && <h3>CONTACTO</h3>}
+				{activeTab === Tabs.CONTACT && (
+					<ContactSection
+						cvData={cvData}
+						form={form}
+						error={error}
+						onFormSubmit={onFormSubmit}
+						onInputChange={onInputChange}
+						onDeleteForm={onDeleteForm}
+					/>
+				)}
 			</main>
 		</div>
 	);
