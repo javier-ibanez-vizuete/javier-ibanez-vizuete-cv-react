@@ -76,6 +76,11 @@ header {
 	color: red;
 }
 
+.accept-text {
+	font-weight: bolder;
+	color: green;
+}
+
 .actived-select {
 	color: var(--primary-text-color);
 }
