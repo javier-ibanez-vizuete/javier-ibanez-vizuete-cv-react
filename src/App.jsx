@@ -66,7 +66,7 @@ export const App = () => {
 					setCvView={setCvView}
 				/>
 			)}
-			{cvView === AppTabs.CV_INTERACTIVE && <CurriculumInteractive />}
+			{cvView === AppTabs.CV_INTERACTIVE && <CurriculumInteractive setCvView={setCvView} cvView={cvView} />}
 		</div>
 	);
 };
