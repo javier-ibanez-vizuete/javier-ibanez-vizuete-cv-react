@@ -8,7 +8,7 @@ const text = `Bienvenido al curriculum interactivo de Javier Ibáñez Vizuete.
 export const InitialModal = ({ setActiveTab, setCvView }) => {
 	return (
 		<div className="initial-modal">
-			<DinamicText text={text} speed={50} setActiveTab={setActiveTab} setCvView={setCvView} />
+			<DinamicText text={text} speed={70} setActiveTab={setActiveTab} setCvView={setCvView} />
 		</div>
 	);
 };
