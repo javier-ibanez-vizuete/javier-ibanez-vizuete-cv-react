@@ -18,7 +18,7 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 				{activeTab === cvInteractiveTabs.GAMES && <h2>JUEGOS</h2>}
 				{activeTab === cvInteractiveTabs.CV_INTERACTIVE && <h2>CURRICULUM</h2>}
 			</main>
-			<Footer cvView={cvView} />
+			<Footer cvView={cvView} setCvView={setCvView} />
 		</>
 	);
 };
