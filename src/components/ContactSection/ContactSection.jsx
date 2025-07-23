@@ -1,6 +1,6 @@
 import "./ContactSection.css";
 
-export const ContactSection = ({ cvData, form, error, onFormSubmit, onDeleteForm, onInputChange }) => {
+export const ContactSection = ({ form, error, onFormSubmit, onDeleteForm, onInputChange }) => {
 	return (
 		<section className="contact-section">
 			<div className="contact-section-label-container">

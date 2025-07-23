@@ -6,8 +6,17 @@ import { Profile } from "../Profile/Profile";
 import { Experiences } from "../Experiences/Experiences";
 import { Education } from "../Education/Education";
 import { ContactSection } from "../ContactSection/ContactSection";
+import { Footer } from "../Footer/Footer";
 
-export const CurriculumTradicional = ({ cvData, form, error, onFormSubmit, onDeleteForm, onInputChange }) => {
+export const CurriculumTradicional = ({
+	cvData,
+	form,
+	error,
+	onFormSubmit,
+	onDeleteForm,
+	onInputChange,
+	setCvView,
+}) => {
 	const [activeTab, setActiveTab] = useState(Tabs.PROFILE);
 
 	return (
@@ -31,6 +40,7 @@ export const CurriculumTradicional = ({ cvData, form, error, onFormSubmit, onDel
 					/>
 				)}
 			</main>
+			<Footer setCvView={setCvView} activeTab={activeTab} setActiveTab={setActiveTab} />
 		</div>
 	);
 };

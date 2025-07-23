@@ -63,6 +63,7 @@ export const App = () => {
 					onFormSubmit={onFormSubmit}
 					onInputChange={onInputChange}
 					onDeleteForm={onDeleteForm}
+					setCvView={setCvView}
 				/>
 			)}
 			{cvView === AppTabs.CV_INTERACTIVE && <CurriculumInteractive />}
