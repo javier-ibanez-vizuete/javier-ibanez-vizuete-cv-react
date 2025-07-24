@@ -17,4 +17,16 @@ export const GameExplanation = ({ gameNumber, handleStartGame, lives }) => {
 				</button>
 			</div>
 		);
+	if (gameNumber === 2)
+		return (
+			<div className="game-explanation-container">
+				<h2>EL AHORCADO</h2>
+				<p>En este Juego deberas adivinar las letras que faltan en la palabra</p>
+				<p>Si fallas Pierdes una vida ({`${lives} - 1`})</p>
+				<p>Si pierdes todas las vidas Pierdes el Juego</p>
+				<button onClick={handleStartGame} className="btn primary-btn">
+					Comenzar
+				</button>
+			</div>
+		);
 };
