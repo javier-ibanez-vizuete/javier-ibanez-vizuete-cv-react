@@ -4,6 +4,7 @@ import { RestartGameModal } from "./RestartGameModal/RestartGameModal";
 import { SecretNumberGame } from "./SecretNumberGame/SecretNumberGame";
 
 export const GamesSection = ({
+	winner,
 	gameNumber,
 	startGame,
 	lives,
@@ -14,6 +15,9 @@ export const GamesSection = ({
 	secretNumber,
 	error,
 	setError,
+	longWord,
+	secretWord,
+	onCheckingLetter,
 }) => {
 	if (lives === 0) return <RestartGameModal handleRestartGame={handleRestartGame} />;
 
@@ -35,7 +39,17 @@ export const GamesSection = ({
 				/>
 			)}
 			{gameNumber === 2 && (
-				<HangmanGame gameNumber={gameNumber} startGame={startGame} handleStartGame={handleStartGame} lives={lives} />
+				<HangmanGame
+					winner={winner}
+					gameNumber={gameNumber}
+					startGame={startGame}
+					handleStartGame={handleStartGame}
+					lives={lives}
+					longWord={longWord}
+					secretWord={secretWord}
+					onCheckingLetter={onCheckingLetter}
+					error={error}
+				/>
 			)}
 			{gameNumber === 3 && <div>Juego Numero 3</div>}
 			{gameNumber === 4 && <div>Juego Numero 4</div>}

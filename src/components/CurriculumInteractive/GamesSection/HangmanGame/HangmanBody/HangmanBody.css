@@ -2,6 +2,7 @@
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(5, 1fr);
+    align-self: center;
 
     width: 200px;
     height: 200px;

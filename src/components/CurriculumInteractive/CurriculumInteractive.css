@@ -6,3 +6,11 @@
 #main > .games-section {
 	font-family: "Chau Philomene One", sans-serif;
 }
+
+.winner-text {
+	font-size: 1.2rem;
+	text-align: center;
+	align-self: center;
+	color: green;
+	font-weight: bolder;
+}
