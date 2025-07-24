@@ -58,7 +58,9 @@
 }
 
 .head > div {
-	clip-path: circle(48% at 50% 50%);
+	border: 1px solid black;
+	border-radius: 50%;
+	background-color: transparent;
 }
 
 .body-piece {
