@@ -3,6 +3,7 @@ import { HangmanGame } from "./HangmanGame/HangmanGame";
 import { MoleSmasherGame } from "./MoleSmasherGame/MoleSmasherGame";
 import { RestartGameModal } from "./RestartGameModal/RestartGameModal";
 import { SecretNumberGame } from "./SecretNumberGame/SecretNumberGame";
+import { TicTacToeGame } from "./TicTacToeGame/TicTacToeGame";
 
 export const GamesSection = ({
 	winner,
@@ -22,6 +23,9 @@ export const GamesSection = ({
 	moles,
 	moleHoles,
 	handleMoleClick,
+	board,
+	turn,
+	handleTicTacWinner,
 }) => {
 	if (lives === 0) return <RestartGameModal handleRestartGame={handleRestartGame} />;
 
@@ -67,7 +71,17 @@ export const GamesSection = ({
 					handleMoleClick={handleMoleClick}
 				/>
 			)}
-			{gameNumber === 4 && <div>Juego Numero 4</div>}
+			{gameNumber === 4 && (
+				<TicTacToeGame
+					startGame={startGame}
+					gameNumber={gameNumber}
+					handleStartGame={handleStartGame}
+					board={board}
+					turn={turn}
+					handleTicTacWinner={handleTicTacWinner}
+					winner={winner}
+				/>
+			)}
 		</section>
 	);
 };
