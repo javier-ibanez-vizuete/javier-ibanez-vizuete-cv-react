@@ -41,4 +41,13 @@ export const GameExplanation = ({ gameNumber, handleStartGame, lives }) => {
 				</button>
 			</div>
 		);
+
+		if(gameNumber === 4) return (<div className="game-explanation-container">
+			<h2>TRES EN RAYA</h2>
+			<p>En este Juego deberas Ganar a la Maquina</p>
+			<p>Colocando 3 cruces en horizontal, vertical o diagonal</p>
+			<p>Si pierdes o empatas Perderas una vida</p>
+			<p>Si te quedas sin vidas, pierdes el juego</p>
+			<button onClick={handleStartGame} className="btn primary-btn">Comenzar</button>
+		</div>)
 };

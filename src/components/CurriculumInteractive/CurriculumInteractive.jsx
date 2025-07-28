@@ -7,6 +7,8 @@ import { cvInteractiveTabs } from "./CvInteractiveNavigation/cvInteractiveTabs.j
 import { GamesSection } from "./GamesSection/GamesSection.jsx";
 import { WORDS_DATA } from "../../utils/WORDS_DATA.js";
 import { INITIAL_MOLE_STATES } from "../../utils/INITIAL_MOLE_STATES.js";
+import { INITIAL_BOARD, TURNS_TIC_TAC_TOE, WINNER_COMBOS } from "../../utils/TIC_TAC_TOE_INITIAL_STATS.js";
+import ReactConfetti from "react-confetti";
 
 const getRandomNumber = () => {
 	const randomNumber = Math.round(Math.random() * 100);
@@ -45,7 +47,7 @@ const getRandomIndex = (arrayLength) => {
 
 export const CurriculumInteractive = ({ cvView, setCvView }) => {
 	const [activeTab, setActiveTab] = useState(cvInteractiveTabs.GAMES); // VOLVER A PONER A NULL UNA VEZ DESARROLLADOS LOS JUEGOS
-	const [gameNumber, setGameNumber] = useState(3);
+	const [gameNumber, setGameNumber] = useState(4);
 	const [lives, setLives] = useState(10);
 	const [startGame, setStartGame] = useState(false);
 	const [error, setError] = useState("");
@@ -61,6 +63,10 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 	// Tercer juego
 	const [moleHoles, setMoleHoles] = useState(INITIAL_MOLE_STATES);
 	const [moles, setMoles] = useState(0);
+
+	// Cuarto juego
+	const [board, setBoard] = useState(INITIAL_BOARD);
+	const [turn, setTurn] = useState(TURNS_TIC_TAC_TOE.X);
 
 	const handleGameNumber = () => {
 		setGameNumber((prev) => prev + 1);
@@ -79,7 +85,7 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 	};
 
 	const handleRestartGame = () => {
-		setGameNumber(3); // VOLVER A DEJAR EN 1 CUANDO TERMINE LE DESARROLLO
+		setGameNumber(4); // VOLVER A DEJAR EN 1 CUANDO TERMINE LE DESARROLLO
 		setLives(10);
 		setSecretNumber(() => getRandomNumber());
 		setStartGame(false);
@@ -156,6 +162,50 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 		return () => clearInterval(interval);
 	}, []);
 
+	const checkTicTacWinner = (boardToCheck) => {
+		for (const combo of WINNER_COMBOS) {
+			const [squareA, squareB, squareC] = combo;
+			if (
+				boardToCheck[squareA] &&
+				boardToCheck[squareA] === boardToCheck[squareB] &&
+				boardToCheck[squareA] === boardToCheck[squareC]
+			) {
+				return boardToCheck[squareA];
+			}
+		}
+		return null;
+	};
+
+	const handleTicTacWinner = (index) => {
+		if (board[index] || winner) return;
+
+		const newboard = [...board];
+		newboard[index] = turn;
+		setBoard(newboard);
+
+		const BoardFull = newboard.every((square) => square !== null);
+
+		if (BoardFull) {
+			setLives((prev) => prev - 1);
+			setTurn(TURNS_TIC_TAC_TOE.X);
+			setBoard(INITIAL_BOARD);
+			return;
+		}
+
+		const newTurn = turn === TURNS_TIC_TAC_TOE.X ? TURNS_TIC_TAC_TOE.O : TURNS_TIC_TAC_TOE.X;
+		setTurn(newTurn);
+
+		const newWinner = checkTicTacWinner(newboard);
+		console.log("Que vale newWinner");
+
+		if (newWinner) {
+			setWinner((prev) => !prev);
+			setTimeout(() => {
+				handleGameNumber();
+			}, 6000);
+		}
+	};
+
 	if (!activeTab) return <InitialModal setActiveTab={setActiveTab} setCvView={setCvView} />;
 	return (
 		<>
@@ -182,6 +232,9 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 						moles={moles}
 						moleHoles={moleHoles}
 						handleMoleClick={handleMoleClick}
+						board={board}
+						turn={turn}
+						handleTicTacWinner={handleTicTacWinner}
 					/>
 				)}
 				{activeTab === cvInteractiveTabs.CV_INTERACTIVE && <h2>CURRICULUM</h2>}
