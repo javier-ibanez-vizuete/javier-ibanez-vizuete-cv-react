@@ -29,4 +29,16 @@ export const GameExplanation = ({ gameNumber, handleStartGame, lives }) => {
 				</button>
 			</div>
 		);
+	if (gameNumber === 3)
+		return (
+			<div className="game-explanation-container">
+				<h2>APLASTA AL TOPO</h2>
+				<p>En este Juego deberas Hacer 'click' en la casilla donde aparezca el 'Topo'</p>
+				<p>Si haces 'Click' en una casilla vacia, Perderas una vida</p>
+				<p>Si consigues Golpear a 5 topos. Ganas la partida</p>
+				<button onClick={handleStartGame} className="btn primary-btn">
+					Comenzar
+				</button>
+			</div>
+		);
 };
