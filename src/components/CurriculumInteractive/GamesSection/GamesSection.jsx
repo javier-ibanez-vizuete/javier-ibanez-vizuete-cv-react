@@ -1,5 +1,6 @@
 import "./GamesSection.css";
 import { HangmanGame } from "./HangmanGame/HangmanGame";
+import { MoleSmasherGame } from "./MoleSmasherGame/MoleSmasherGame";
 import { RestartGameModal } from "./RestartGameModal/RestartGameModal";
 import { SecretNumberGame } from "./SecretNumberGame/SecretNumberGame";
 
@@ -18,6 +19,9 @@ export const GamesSection = ({
 	longWord,
 	secretWord,
 	onCheckingLetter,
+	moles,
+	moleHoles,
+	handleMoleClick,
 }) => {
 	if (lives === 0) return <RestartGameModal handleRestartGame={handleRestartGame} />;
 
@@ -51,7 +55,18 @@ export const GamesSection = ({
 					error={error}
 				/>
 			)}
-			{gameNumber === 3 && <div>Juego Numero 3</div>}
+			{gameNumber === 3 && (
+				<MoleSmasherGame
+					startGame={startGame}
+					gameNumber={gameNumber}
+					handleStartGame={handleStartGame}
+					lives={lives}
+					moles={moles}
+					moleHoles={moleHoles}
+					winner={winner}
+					handleMoleClick={handleMoleClick}
+				/>
+			)}
 			{gameNumber === 4 && <div>Juego Numero 4</div>}
 		</section>
 	);
