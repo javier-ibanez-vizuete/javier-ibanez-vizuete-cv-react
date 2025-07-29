@@ -61,6 +61,12 @@ export const CurriculumInteractive = ({
 	const [lives, setLives] = useState(10);
 	const [startGame, setStartGame] = useState(false);
 	const [winner, setWinner] = useState(false);
+	const [gameResult, setGameResult] = useState({
+		secretNumber: "blocked",
+		secretWord: "blocked",
+		moleSmasher: "surrendered",
+		ticTacToe: "blocked",
+	});
 
 	// Primer juego
 	const [secretNumber, setSecretNumber] = useState(() => getRandomNumber());
@@ -284,6 +290,7 @@ export const CurriculumInteractive = ({
 						onFormSubmit={onFormSubmit}
 						onInputChange={onInputChange}
 						onDeleteForm={onDeleteForm}
+						gameResult={gameResult}
 					/>
 				)}
 			</main>

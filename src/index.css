@@ -131,6 +131,20 @@ a {
 	margin: 0 auto;
 }
 
+.blocked {
+	background-color: black;
+	color: black;
+}
+
+.passed {
+	background-color: transparent;
+	color: unset;
+}
+
+.surrendered {
+	background-color: red;
+}
+
 /* ---Tablets */
 @media (width >= 768px) {
 	:root {
