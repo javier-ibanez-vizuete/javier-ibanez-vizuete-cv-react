@@ -27,8 +27,6 @@ export const SecretNumberGame = ({
 		setInputNumber(Number(event.target.value));
 	};
 
-	console.log("Numero secreto", secretNumber);
-
 	const checkWinner = (event) => {
 		event.preventDefault();
 		if (!inputNumber && inputNumber !== 0) return setError("Debes introducir un numero");
@@ -48,7 +46,6 @@ export const SecretNumberGame = ({
 		}
 
 		if (inputNumber === secretNumber) {
-			console.log("Entrando en el if input === secretNumber");
 			setIsWinner((prev) => !prev);
 			setInputNumber("");
 			setTimeout(() => {

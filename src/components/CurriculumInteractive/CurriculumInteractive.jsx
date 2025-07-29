@@ -8,7 +8,7 @@ import { GamesSection } from "./GamesSection/GamesSection.jsx";
 import { WORDS_DATA } from "../../utils/WORDS_DATA.js";
 import { INITIAL_MOLE_STATES } from "../../utils/INITIAL_MOLE_STATES.js";
 import { INITIAL_BOARD, TURNS_TIC_TAC_TOE, WINNER_COMBOS } from "../../utils/TIC_TAC_TOE_INITIAL_STATS.js";
-import ReactConfetti from "react-confetti";
+import { CurriculumComplete } from "../CurriculumComplete/CurriculumComplete.jsx";
 
 const getRandomNumber = () => {
 	const randomNumber = Math.round(Math.random() * 100);
@@ -45,12 +45,21 @@ const getRandomIndex = (arrayLength) => {
 	return randomIndex;
 };
 
-export const CurriculumInteractive = ({ cvView, setCvView }) => {
-	const [activeTab, setActiveTab] = useState(cvInteractiveTabs.GAMES); // VOLVER A PONER A NULL UNA VEZ DESARROLLADOS LOS JUEGOS
-	const [gameNumber, setGameNumber] = useState(4);
+export const CurriculumInteractive = ({
+	cvView,
+	setCvView,
+	cvData,
+	form,
+	error,
+	setError,
+	onFormSubmit,
+	onInputChange,
+	onDeleteForm,
+}) => {
+	const [activeTab, setActiveTab] = useState(null);
+	const [gameNumber, setGameNumber] = useState(5);
 	const [lives, setLives] = useState(10);
 	const [startGame, setStartGame] = useState(false);
-	const [error, setError] = useState("");
 	const [winner, setWinner] = useState(false);
 
 	// Primer juego
@@ -85,7 +94,7 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 	};
 
 	const handleRestartGame = () => {
-		setGameNumber(4); // VOLVER A DEJAR EN 1 CUANDO TERMINE LE DESARROLLO
+		setGameNumber(1);
 		setLives(10);
 		setSecretNumber(() => getRandomNumber());
 		setStartGame(false);
@@ -188,12 +197,12 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 		setTurn(newTurn);
 
 		const newWinner = checkTicTacWinner(newboard);
-		console.log("Que vale newWinner");
 
 		if (newWinner) {
 			setWinner((prev) => !prev);
 			setTimeout(() => {
 				handleGameNumber();
+				setActiveTab(cvInteractiveTabs.CV_INTERACTIVE);
 			}, 6000);
 		}
 		const BoardFull = newboard.every((square) => square !== null);
@@ -232,7 +241,7 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 			}
 			setTurn(TURNS_TIC_TAC_TOE.X);
 		}, 1000);
-		
+
 		return () => clearTimeout(timeOut);
 	}, [turn, board, winner]);
 
@@ -241,6 +250,7 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 		<>
 			<header>
 				<CvInteractiveNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+				{gameNumber >= 5 && activeTab === cvInteractiveTabs.CV_INTERACTIVE && <h2>Javier Ibáñez Vizuete</h2>}
 			</header>
 			<main id="main">
 				{activeTab === cvInteractiveTabs.GAMES && (
@@ -267,7 +277,16 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 						handleTicTacWinner={handleTicTacWinner}
 					/>
 				)}
-				{activeTab === cvInteractiveTabs.CV_INTERACTIVE && <h2>CURRICULUM</h2>}
+				{activeTab === cvInteractiveTabs.CV_INTERACTIVE && (
+					<CurriculumComplete
+						cvData={cvData}
+						form={form}
+						error={error}
+						onFormSubmit={onFormSubmit}
+						onInputChange={onInputChange}
+						onDeleteForm={onDeleteForm}
+					/>
+				)}
 			</main>
 			<Footer cvView={cvView} setCvView={setCvView} />
 		</>

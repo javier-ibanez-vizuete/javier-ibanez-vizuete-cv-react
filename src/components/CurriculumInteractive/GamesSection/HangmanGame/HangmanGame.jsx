@@ -17,8 +17,6 @@ export const HangmanGame = ({
 }) => {
 	if (!startGame) return <GameExplanation gameNumber={gameNumber} handleStartGame={handleStartGame} lives={lives} />;
 
-	console.log("Palabra secreta", longWord);
-
 	return (
 		<div className="hangman-game-container">
 			{winner && <ReactConfetti />}

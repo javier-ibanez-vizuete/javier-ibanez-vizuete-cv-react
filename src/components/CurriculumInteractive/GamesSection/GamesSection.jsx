@@ -4,6 +4,7 @@ import { MoleSmasherGame } from "./MoleSmasherGame/MoleSmasherGame";
 import { RestartGameModal } from "./RestartGameModal/RestartGameModal";
 import { SecretNumberGame } from "./SecretNumberGame/SecretNumberGame";
 import { TicTacToeGame } from "./TicTacToeGame/TicTacToeGame";
+import { CongratsScreen } from "../../CongratsScreen/CongratsScreen";
 
 export const GamesSection = ({
 	winner,
@@ -82,6 +83,7 @@ export const GamesSection = ({
 					winner={winner}
 				/>
 			)}
+			{gameNumber > 4 && <CongratsScreen />}
 		</section>
 	);
 };
