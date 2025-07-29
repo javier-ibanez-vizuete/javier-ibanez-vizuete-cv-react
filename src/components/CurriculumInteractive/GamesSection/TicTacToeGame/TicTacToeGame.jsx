@@ -15,14 +15,13 @@ export const TicTacToeGame = ({ startGame, gameNumber, handleStartGame, board, t
 			</div>
 
 			<div className="tic-tac-toe-board-container">
-				{!winner &&
-					board.map((_, index) => {
-						return (
-							<Square key={index} index={index} handleTicTacWinner={handleTicTacWinner}>
-								{board[index]}
-							</Square>
-						);
-					})}
+				{board.map((_, index) => {
+					return (
+						<Square key={index} index={index} handleTicTacWinner={handleTicTacWinner}>
+							{board[index]}
+						</Square>
+					);
+				})}
 			</div>
 			{winner && <ReactConfetti />}
 			{winner && <span className="winner-text">HAS COMPLETADO EL JUEGO</span>}
