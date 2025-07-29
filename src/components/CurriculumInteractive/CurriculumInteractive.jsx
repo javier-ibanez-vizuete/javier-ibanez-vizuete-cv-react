@@ -177,20 +177,12 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 	};
 
 	const handleTicTacWinner = (index) => {
+		if (turn === TURNS_TIC_TAC_TOE.O) return;
 		if (board[index] || winner) return;
 
 		const newboard = [...board];
 		newboard[index] = turn;
 		setBoard(newboard);
-
-		const BoardFull = newboard.every((square) => square !== null);
-
-		if (BoardFull) {
-			setLives((prev) => prev - 1);
-			setTurn(TURNS_TIC_TAC_TOE.X);
-			setBoard(INITIAL_BOARD);
-			return;
-		}
 
 		const newTurn = turn === TURNS_TIC_TAC_TOE.X ? TURNS_TIC_TAC_TOE.O : TURNS_TIC_TAC_TOE.X;
 		setTurn(newTurn);
@@ -204,7 +196,45 @@ export const CurriculumInteractive = ({ cvView, setCvView }) => {
 				handleGameNumber();
 			}, 6000);
 		}
+		const BoardFull = newboard.every((square) => square !== null);
+
+		if (BoardFull) {
+			setLives((prev) => prev - 1);
+			setTurn(TURNS_TIC_TAC_TOE.X);
+			setBoard(INITIAL_BOARD);
+			return;
+		}
 	};
+
+	useEffect(() => {
+		if (turn !== TURNS_TIC_TAC_TOE.O || winner) return;
+
+		const emptyPosition = board
+			.map((holes, index) => (holes === null ? index : null))
+			.filter((value) => value !== null);
+
+		if (emptyPosition.length === 0) return;
+
+		const randomIndex = Math.floor(Math.random() * emptyPosition.length);
+		const randomEmptyPosition = emptyPosition[randomIndex];
+
+		const timeOut = setTimeout(() => {
+			const newBoard = [...board];
+			newBoard[randomEmptyPosition] = TURNS_TIC_TAC_TOE.O;
+			setBoard(newBoard);
+
+			const newWinner = checkTicTacWinner(newBoard);
+			if (newWinner) {
+				setBoard(INITIAL_BOARD);
+				setTurn(TURNS_TIC_TAC_TOE.X);
+				setLives((prev) => prev - 1);
+				return;
+			}
+			setTurn(TURNS_TIC_TAC_TOE.X);
+		}, 1000);
+		
+		return () => clearTimeout(timeOut);
+	}, [turn, board, winner]);
 
 	if (!activeTab) return <InitialModal setActiveTab={setActiveTab} setCvView={setCvView} />;
 	return (
