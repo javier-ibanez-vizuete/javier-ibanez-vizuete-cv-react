@@ -66,7 +66,19 @@ export const App = () => {
 					setCvView={setCvView}
 				/>
 			)}
-			{cvView === AppTabs.CV_INTERACTIVE && <CurriculumInteractive setCvView={setCvView} cvView={cvView} />}
+			{cvView === AppTabs.CV_INTERACTIVE && (
+				<CurriculumInteractive
+					setCvView={setCvView}
+					cvView={cvView}
+					cvData={cvData}
+					form={form}
+					error={error}
+					setError={setError}
+					onFormSubmit={onFormSubmit}
+					onInputChange={onInputChange}
+					onDeleteForm={onDeleteForm}
+				/>
+			)}
 		</div>
 	);
 };

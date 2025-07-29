@@ -15,7 +15,7 @@ export const DinamicText = ({ text, speed, setActiveTab, setCvView }) => {
 
 			return () => clearTimeout(timeout);
 		}
-	}, [index, text, speed]);
+	}, [index]);
 
 	return (
 		<>
