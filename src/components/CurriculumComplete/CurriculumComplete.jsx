@@ -7,6 +7,8 @@ import "./CurriculumComplete.css";
 export const CurriculumComplete = ({ cvData, form, error, onFormSubmit, onInputChange, onDeleteForm }) => {
 	return (
 		<section className="curriculum-complete-section">
+            <h2 className="title">Javier Ibáñez Vizuete</h2>
+            
 			<Profile cvData={cvData} />
 
 			<Experiences cvData={cvData} />

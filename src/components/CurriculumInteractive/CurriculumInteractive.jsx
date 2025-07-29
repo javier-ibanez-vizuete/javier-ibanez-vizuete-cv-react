@@ -57,7 +57,7 @@ export const CurriculumInteractive = ({
 	onDeleteForm,
 }) => {
 	const [activeTab, setActiveTab] = useState(null);
-	const [gameNumber, setGameNumber] = useState(5);
+	const [gameNumber, setGameNumber] = useState(1);
 	const [lives, setLives] = useState(10);
 	const [startGame, setStartGame] = useState(false);
 	const [winner, setWinner] = useState(false);
@@ -250,7 +250,6 @@ export const CurriculumInteractive = ({
 		<>
 			<header>
 				<CvInteractiveNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
-				{gameNumber >= 5 && activeTab === cvInteractiveTabs.CV_INTERACTIVE && <h2>Javier Ibáñez Vizuete</h2>}
 			</header>
 			<main id="main">
 				{activeTab === cvInteractiveTabs.GAMES && (
