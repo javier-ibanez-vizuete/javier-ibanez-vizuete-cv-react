@@ -14,7 +14,7 @@
 }
 
 .floating-text.result-passed {
-	color: rgba(0, 128, 0, 0.5);
+	color: rgba(0, 128, 0, 0.2);
 }
 
 .floating-text.result-surrendered {
