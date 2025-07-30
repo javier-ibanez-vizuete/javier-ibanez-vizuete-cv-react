@@ -272,7 +272,7 @@ export const CurriculumInteractive = ({
 
 	if (!activeTab) return <InitialModal setActiveTab={setActiveTab} setCvView={setCvView} />;
 	return (
-		<>
+		<div className="curriculum-interactive-container">
 			<header>
 				<CvInteractiveNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
 			</header>
@@ -318,6 +318,6 @@ export const CurriculumInteractive = ({
 					<Button className={"btn primary-btn"} bodyText={"Rendirse"} handleButton={handleSurrenderButton} />
 				)}
 			</Footer>
-		</>
+		</div>
 	);
 };
