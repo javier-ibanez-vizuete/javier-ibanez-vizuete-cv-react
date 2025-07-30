@@ -4,9 +4,10 @@ import linkedInLogoPng from "../../assets/icons/linkedin/logo-linkedin.png";
 import linkedInLogoWebp from "../../assets/icons/linkedin/logo-linkedin.png";
 import linkedInLogoAvif from "../../assets/icons/linkedin/logo-linkedin.png";
 
-export const Profile = ({ cvData, gameResult }) => {
+export const Profile = ({ children, cvData, gameResult }) => {
 	return (
 		<section className={`profile-section ${gameResult?.secretNumber}`}>
+			{gameResult?.secretNumber !== "blocked" && children}
 			<h3 className="profile-section-title">PERFIL</h3>
 			<div className="profile-section-about">
 				<p>

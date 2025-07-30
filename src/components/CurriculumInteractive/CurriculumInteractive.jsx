@@ -85,14 +85,16 @@ export const CurriculumInteractive = ({
 	const [turn, setTurn] = useState(TURNS_TIC_TAC_TOE.X);
 
 	const handleGameNumber = () => {
-		if (gameNumber === 1 && gameResult.secretNumber !== "surrendered")
-			setGameResult((prev) => ({ ...prev, secretNumber: "passed" }));
-		if (gameNumber === 2 && gameResult.secretWord !== "surrendered")
-			setGameResult((prev) => ({ ...prev, secretWord: "passed" }));
-		if (gameNumber === 3 && gameResult.moleSmasher !== "surrendered")
-			setGameResult((prev) => ({ ...prev, moleSmasher: "passed" }));
-		if (gameNumber === 4 && gameResult.ticTacToe !== "surrendered")
-			setGameResult((prev) => ({ ...prev, ticTacToe: "passed" }));
+		setGameResult((prevGameResult) => {
+			const { secretNumber, secretWord, moleSmasher, ticTacToe } = prevGameResult;
+			if (gameNumber === 1 && secretNumber !== "surrendered")
+				return { ...prevGameResult, secretNumber: "passed" };
+			if (gameNumber === 2 && secretWord !== "surrendered") return { ...prevGameResult, secretWord: "passed" };
+			if (gameNumber === 3 && moleSmasher !== "surrendered") return { ...prevGameResult, moleSmasher: "passed" };
+			if (gameNumber === 4 && ticTacToe !== "surrendered") return { ...prevGameResult, ticTacToe: "passed" };
+			return prevGameResult;
+		});
+
 		setGameNumber((prev) => prev + 1);
 		setLives(10);
 		setStartGame(false);

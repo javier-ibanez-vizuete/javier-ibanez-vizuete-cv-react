@@ -3,6 +3,7 @@ import { DivisorLine } from "../DivisorLine/DivisorLine";
 import { Education } from "../Education/Education";
 import { EncriptedContent } from "../EncriptedContent/EncriptedContent";
 import { Experiences } from "../Experiences/Experiences";
+import { FloatingText } from "../FloatingText/FloatingText";
 import { Profile } from "../Profile/Profile";
 import "./CurriculumComplete.css";
 
@@ -12,17 +13,23 @@ export const CurriculumComplete = ({ cvData, form, error, onFormSubmit, onInputC
 			<h2 className="title">Javier Ibáñez Vizuete</h2>
 
 			{gameResult.secretNumber === "blocked" && <EncriptedContent bodyText={"Perfil"} />}
-			<Profile cvData={cvData} gameResult={gameResult} />
+			<Profile cvData={cvData} gameResult={gameResult}>
+				<FloatingText gameResult={gameResult?.secretNumber} />
+			</Profile>
 
 			{gameResult.secretWord !== "blocked" && <DivisorLine horizontalLine thickness={2} />}
 
 			{gameResult.secretWord === "blocked" && <EncriptedContent bodyText={"Experiencia"} />}
-			<Experiences cvData={cvData} gameResult={gameResult} />
+			<Experiences cvData={cvData} gameResult={gameResult}>
+				<FloatingText gameResult={gameResult?.secretWord} />
+			</Experiences>
 
 			{gameResult.moleSmasher !== "blocked" && <DivisorLine horizontalLine thickness={2} />}
 
 			{gameResult.moleSmasher === "blocked" && <EncriptedContent bodyText={"Formación"} />}
-			<Education cvData={cvData} gameResult={gameResult} />
+			<Education cvData={cvData} gameResult={gameResult}>
+				<FloatingText gameResult={gameResult?.moleSmasher} />
+			</Education>
 
 			{gameResult.ticTacToe !== "blocked" && <DivisorLine horizontalLine thickness={2} />}
 
@@ -35,7 +42,9 @@ export const CurriculumComplete = ({ cvData, form, error, onFormSubmit, onInputC
 				onInputChange={onInputChange}
 				onDeleteForm={onDeleteForm}
 				gameResult={gameResult}
-			/>
+			>
+				<FloatingText gameResult={gameResult?.ticTacToe} />
+			</ContactSection>
 		</section>
 	);
 };
