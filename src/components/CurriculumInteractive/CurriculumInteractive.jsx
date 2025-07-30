@@ -97,6 +97,7 @@ export const CurriculumInteractive = ({
 		setLives(10);
 		setStartGame(false);
 		setWinner(false);
+		setActiveTab(cvInteractiveTabs.CV_INTERACTIVE);
 	};
 
 	const handleStartGame = () => {
@@ -182,7 +183,7 @@ export const CurriculumInteractive = ({
 					return prev.map((hole, index) => ({ ...hole, hasMole: index === randomIndex }));
 				}
 			});
-		}, 600);
+		}, 700);
 		return () => clearInterval(interval);
 	}, []);
 

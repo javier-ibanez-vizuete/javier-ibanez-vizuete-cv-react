@@ -16,6 +16,8 @@ import moleSmashedPng from "../../../../assets/pictures/mole/mole-smashed/mole-s
 import moleSmashedWebp from "../../../../assets/pictures/mole/mole-smashed/mole-smashed-200w.png";
 import moleSmashedAvif from "../../../../assets/pictures/mole/mole-smashed/mole-smashed-200w.png";
 
+import { FullscreenConfetti } from "../../../FullscreenConfetti/FullscreenConfetti";
+
 export const MoleSmasherGame = ({
 	startGame,
 	gameNumber,
@@ -47,7 +49,9 @@ export const MoleSmasherGame = ({
 				</div>
 			</div>
 
-			{winner && <h3 className="winner-text">Has Completado el Juego</h3>}
+			{winner && <FullscreenConfetti />}
+			{winner && <h3 className="winner-text">ENHORABUENA HAS COMPLETADO EL JUEGO</h3>}
+			{winner && <h3 className="winner-text">NUEVA SECCION DESBLOQUEADA: FORMACIÓN</h3>}
 
 			{!winner && (
 				<div className="mole-smasher-board">

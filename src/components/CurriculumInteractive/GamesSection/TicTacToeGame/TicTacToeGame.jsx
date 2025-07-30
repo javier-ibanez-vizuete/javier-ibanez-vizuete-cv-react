@@ -1,8 +1,8 @@
-import ReactConfetti from "react-confetti";
 import { TURNS_TIC_TAC_TOE } from "../../../../utils/TIC_TAC_TOE_INITIAL_STATS";
 import { GameExplanation } from "../GameExplanation/GameExplanation";
 import { Square } from "./Square/Square";
 import "./TicTacToeGame.css";
+import { FullscreenConfetti } from "../../../FullscreenConfetti/FullscreenConfetti";
 
 export const TicTacToeGame = ({ startGame, gameNumber, handleStartGame, board, turn, handleTicTacWinner, winner }) => {
 	if (!startGame) return <GameExplanation gameNumber={gameNumber} handleStartGame={handleStartGame} />;
@@ -23,8 +23,9 @@ export const TicTacToeGame = ({ startGame, gameNumber, handleStartGame, board, t
 					);
 				})}
 			</div>
-			{winner && <ReactConfetti />}
-			{winner && <span className="winner-text">HAS COMPLETADO EL JUEGO</span>}
+			{winner && <FullscreenConfetti />}
+			{winner && <span className="winner-text">ENHORABUENA HAS COMPLETADO EL JUEGO</span>}
+			{winner && <span className="winner-text">NUEVA SECCION DESBLOQUEADA: CONTACTO</span>}
 		</div>
 	);
 };
