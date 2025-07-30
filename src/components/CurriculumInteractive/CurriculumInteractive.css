@@ -1,17 +1,18 @@
-#main {
+.curriculum-interactive-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.curriculum-interactive-container  * {
+	font-family: "Chau Philomene One", sans-serif;
+}
+
+.curriculum-interactive-container main {
 	display: flex;
 	flex-direction: column;
 }
 
-#main > .games-section {
-	font-family: "Chau Philomene One", sans-serif;
-}
-
-.winner-text {
-	
-	font-size: 1.2rem;
-	text-align: center;
-	align-self: center;
-	color: green;
-	font-weight: bolder;
+.curriculum-interactive-container .tab, .curriculum-interactive-container .btn {
+	letter-spacing: 2px;
 }

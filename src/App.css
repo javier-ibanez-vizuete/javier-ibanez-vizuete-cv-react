@@ -13,6 +13,7 @@
 
 .title,
 .subtitle {
+	text-transform: uppercase;
 	text-align: center;
 }
 
@@ -38,13 +39,11 @@ header {
 }
 
 .tab {
-	padding: var(--spacing-xs) var(--spacing-sm);
+	padding: var(--spacing-sm) var(--spacing-md);
 	border: none;
 	cursor: pointer;
 	background: var(--btn-xtra-color);
 	border-radius: var(--border-radius-card);
-	color: var(--primary-text-color);
-	font-weight: bold;
 }
 
 .tab.active {
@@ -52,9 +51,10 @@ header {
 	box-shadow: inset var(--shadow-soft);
 	color: var(--secondary-text-color);
 }
+
 .btn {
 	border: none;
-	padding: var(--spacing-xs) var(--spacing-sm);
+	padding: var(--spacing-sm) var(--spacing-md);
 	border-radius: var(--border-radius-card);
 	box-shadow: inset var(--shadow-soft);
 	transition-duration: 0.2s;
@@ -71,18 +71,23 @@ header {
 	color: var(--secondary-text-color);
 }
 
+/* ----Texto para error de formulario/ juegos---- */
 .error-text {
 	font-weight: bolder;
 	color: red;
 }
 
-.accept-text {
-	font-weight: bolder;
-	color: green;
-}
-
+/* --- Color del option del formulario contacto */
 .actived-select {
 	color: var(--primary-text-color);
+}
+
+.winner-text {
+	font-size: 1.2rem;
+	text-align: center;
+	align-self: center;
+	color: green;
+	font-weight: bolder;
 }
 
 main {
