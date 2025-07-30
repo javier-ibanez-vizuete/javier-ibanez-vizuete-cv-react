@@ -9,6 +9,7 @@ import { WORDS_DATA } from "../../utils/WORDS_DATA.js";
 import { INITIAL_MOLE_STATES } from "../../utils/INITIAL_MOLE_STATES.js";
 import { INITIAL_BOARD, TURNS_TIC_TAC_TOE, WINNER_COMBOS } from "../../utils/TIC_TAC_TOE_INITIAL_STATS.js";
 import { CurriculumComplete } from "../CurriculumComplete/CurriculumComplete.jsx";
+import { Button } from "../Button/Button.jsx";
 
 const getRandomNumber = () => {
 	const randomNumber = Math.round(Math.random() * 100);
@@ -57,10 +58,16 @@ export const CurriculumInteractive = ({
 	onDeleteForm,
 }) => {
 	const [activeTab, setActiveTab] = useState(null);
-	const [gameNumber, setGameNumber] = useState(5);
+	const [gameNumber, setGameNumber] = useState(1);
 	const [lives, setLives] = useState(10);
 	const [startGame, setStartGame] = useState(false);
 	const [winner, setWinner] = useState(false);
+	const [gameResult, setGameResult] = useState({
+		secretNumber: "blocked",
+		secretWord: "blocked",
+		moleSmasher: "blocked",
+		ticTacToe: "blocked",
+	});
 
 	// Primer juego
 	const [secretNumber, setSecretNumber] = useState(() => getRandomNumber());
@@ -78,10 +85,19 @@ export const CurriculumInteractive = ({
 	const [turn, setTurn] = useState(TURNS_TIC_TAC_TOE.X);
 
 	const handleGameNumber = () => {
+		if (gameNumber === 1 && gameResult.secretNumber !== "surrendered")
+			setGameResult((prev) => ({ ...prev, secretNumber: "passed" }));
+		if (gameNumber === 2 && gameResult.secretWord !== "surrendered")
+			setGameResult((prev) => ({ ...prev, secretWord: "passed" }));
+		if (gameNumber === 3 && gameResult.moleSmasher !== "surrendered")
+			setGameResult((prev) => ({ ...prev, moleSmasher: "passed" }));
+		if (gameNumber === 4 && gameResult.ticTacToe !== "surrendered")
+			setGameResult((prev) => ({ ...prev, ticTacToe: "passed" }));
 		setGameNumber((prev) => prev + 1);
 		setLives(10);
 		setStartGame(false);
 		setWinner(false);
+		setActiveTab(cvInteractiveTabs.CV_INTERACTIVE);
 	};
 
 	const handleStartGame = () => {
@@ -167,7 +183,7 @@ export const CurriculumInteractive = ({
 					return prev.map((hole, index) => ({ ...hole, hasMole: index === randomIndex }));
 				}
 			});
-		}, 600);
+		}, 700);
 		return () => clearInterval(interval);
 	}, []);
 
@@ -245,12 +261,20 @@ export const CurriculumInteractive = ({
 		return () => clearTimeout(timeOut);
 	}, [turn, board, winner]);
 
+	const handleSurrenderButton = () => {
+		if (gameNumber === 1) setGameResult((prev) => ({ ...prev, secretNumber: "surrendered" }));
+		if (gameNumber === 2) setGameResult((prev) => ({ ...prev, secretWord: "surrendered" }));
+		if (gameNumber === 3) setGameResult((prev) => ({ ...prev, moleSmasher: "surrendered" }));
+		if (gameNumber === 4) setGameResult((prev) => ({ ...prev, ticTacToe: "surrendered" }));
+		handleGameNumber();
+		return;
+	};
+
 	if (!activeTab) return <InitialModal setActiveTab={setActiveTab} setCvView={setCvView} />;
 	return (
 		<>
 			<header>
 				<CvInteractiveNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
-				{gameNumber >= 5 && activeTab === cvInteractiveTabs.CV_INTERACTIVE && <h2>Javier Ibáñez Vizuete</h2>}
 			</header>
 			<main id="main">
 				{activeTab === cvInteractiveTabs.GAMES && (
@@ -285,10 +309,15 @@ export const CurriculumInteractive = ({
 						onFormSubmit={onFormSubmit}
 						onInputChange={onInputChange}
 						onDeleteForm={onDeleteForm}
+						gameResult={gameResult}
 					/>
 				)}
 			</main>
-			<Footer cvView={cvView} setCvView={setCvView} />
+			<Footer cvView={cvView} setCvView={setCvView}>
+				{activeTab === cvInteractiveTabs.GAMES && gameNumber < 5 && (
+					<Button className={"btn primary-btn"} bodyText={"Rendirse"} handleButton={handleSurrenderButton} />
+				)}
+			</Footer>
 		</>
 	);
 };

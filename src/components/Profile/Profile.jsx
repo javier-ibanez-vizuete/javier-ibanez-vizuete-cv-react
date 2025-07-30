@@ -4,9 +4,9 @@ import linkedInLogoPng from "../../assets/icons/linkedin/logo-linkedin.png";
 import linkedInLogoWebp from "../../assets/icons/linkedin/logo-linkedin.png";
 import linkedInLogoAvif from "../../assets/icons/linkedin/logo-linkedin.png";
 
-export const Profile = ({ cvData }) => {
+export const Profile = ({ cvData, gameResult }) => {
 	return (
-		<section className="profile-section">
+		<section className={`profile-section ${gameResult?.secretNumber}`}>
 			<h3 className="profile-section-title">PERFIL</h3>
 			<div className="profile-section-about">
 				<p>
@@ -15,7 +15,12 @@ export const Profile = ({ cvData }) => {
 				<p>
 					Email: <span>{cvData.personalInfo.email}</span>
 				</p>
-				<a href={cvData.personalInfo.portfolio} target="_blank" rel="noopener noreferrer" className="profile-section-btn">
+				<a
+					href={cvData.personalInfo.portfolio}
+					target="_blank"
+					rel="noopener noreferrer"
+					className="profile-section-btn"
+				>
 					Portfolio
 				</a>
 			</div>

@@ -126,9 +126,26 @@ a {
 	color: unset;
 }
 
+button {
+	cursor: pointer;
+}
+
 .container {
 	width: var(--container-width);
 	margin: 0 auto;
+}
+
+body .blocked {
+	display: none;
+}
+
+body .passed {
+	background-color: transparent;
+	color: unset;
+}
+
+body .surrendered {
+	background-color: rgba(255, 0, 0, 0.1);
 }
 
 /* ---Tablets */

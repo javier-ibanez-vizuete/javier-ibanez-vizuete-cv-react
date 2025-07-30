@@ -4,5 +4,13 @@
 	flex: 1;
 	gap: 1rem;
 
-    padding: var(--spacing-2xl) 0;
+	padding: var(--spacing-2xl) 0;
+}
+
+@media (width >= 1024px) {
+	.initial-modal {
+		justify-content: center;
+
+		padding: var(--spacing-2xl);
+	}
 }

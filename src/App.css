@@ -41,7 +41,7 @@ header {
 	padding: var(--spacing-xs) var(--spacing-sm);
 	border: none;
 	cursor: pointer;
-	background: none;
+	background: var(--btn-xtra-color);
 	border-radius: var(--border-radius-card);
 	color: var(--primary-text-color);
 	font-weight: bold;
@@ -95,7 +95,7 @@ main {
 		gap: 2rem;
 	}
 
-	header .navigation {
+	.navigation {
 		gap: var(--spacing-sm);
 
 		padding: var(--spacing-2xl);
@@ -118,6 +118,11 @@ main {
 
 /* ---Portatiles */
 @media (width >= 1024px) {
+	.navigation {
+		margin: 0 auto;
+
+		gap: var(--spacing-4xl);
+	}
 }
 
 /* ---Pantallas Escritorio */

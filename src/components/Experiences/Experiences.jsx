@@ -4,12 +4,12 @@ import { ExperiencesTabs } from "./ExperiencesTabs";
 import { ExperiencesNav } from "./ExperiencesNav/ExperiencesNav";
 import { Experience } from "../Experience/Experience";
 
-export const Experiences = ({ cvData }) => {
+export const Experiences = ({ cvData, gameResult }) => {
 	const { experiences } = cvData;
 	const [experienceTab, setExperienceTab] = useState(ExperiencesTabs.DEVELOP);
 
 	return (
-		<section className="experience-section">
+		<section className={`experience-section ${gameResult?.secretWord}`}>
 			<h2 className="title">Experiencia</h2>
 			<ExperiencesNav experienceTab={experienceTab} setExperienceTab={setExperienceTab} />
 			<div className="experiences-container">

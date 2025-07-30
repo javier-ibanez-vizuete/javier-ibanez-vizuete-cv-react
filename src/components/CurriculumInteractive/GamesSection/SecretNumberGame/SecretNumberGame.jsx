@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./SecretNumberGame.css";
 import { GameExplanation } from "../GameExplanation/GameExplanation";
-import ReactConfetti from "react-confetti";
+import { FullscreenConfetti } from "../../../FullscreenConfetti/FullscreenConfetti";
 
 export const SecretNumberGame = ({
 	gameNumber,
@@ -60,8 +60,9 @@ export const SecretNumberGame = ({
 		<div className="secret-number-game-container">
 			<h2 className="subtitle">Numero Secreto</h2>
 			{isWinner && <h2 className="secret-number-box">{secretNumber}</h2>}
-			{isWinner && <ReactConfetti />}
+			{isWinner && <FullscreenConfetti />}
 			{isWinner && <p className="accept-text accept-secret-number">ENHORABUENA PASAS AL SIGUIENTE JUEGO</p>}
+			{isWinner && <p className="accept-text accept-secret-number">NUEVA SECCION DESBLOQUEADA: PERFIL</p>}
 			{!isWinner && <h2 className="secret-number-box">?</h2>}
 			<form action="#" onSubmit={checkWinner} className="secret-number-form">
 				<input

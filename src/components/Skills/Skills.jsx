@@ -5,8 +5,10 @@ export const Skills = ({ skills }) => {
 
 	return (
 		<ul className="skills-list-container">
-			{skills.map((skill, index) => (
-				<li key={`${skill}-${index}`} className="skill-list-item">{skill}</li>
+			{skills.map((skill) => (
+				<li key={skill} className="skill-list-item">
+					{skill}
+				</li>
 			))}
 		</ul>
 	);

@@ -3,6 +3,8 @@
 	flex-direction: column;
 	flex: 1;
 	gap: 2rem;
+
+	padding-bottom: 2rem;
 }
 
 .mole-smasher-counter-container {
