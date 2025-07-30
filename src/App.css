@@ -41,7 +41,7 @@ header {
 	padding: var(--spacing-xs) var(--spacing-sm);
 	border: none;
 	cursor: pointer;
-	background: none;
+	background: var(--btn-xtra-color);
 	border-radius: var(--border-radius-card);
 	color: var(--primary-text-color);
 	font-weight: bold;

@@ -1,8 +1,13 @@
 import "./ContactSection.css";
 
-export const ContactSection = ({ form, error, onFormSubmit, onDeleteForm, onInputChange }) => {
+export const ContactSection = ({ form, error, onFormSubmit, onDeleteForm, onInputChange, gameResult }) => {
 	return (
-		<section className="contact-section">
+		<section className={`contact-section ${gameResult?.ticTacToe}`}>
+			<h2 className="subtitle">CONTACTAR</h2>
+			
+			<small className="empty-list-text">
+				El formulario se enviara usando su programa de mensajeria predeterminado
+			</small>
 			<div className="contact-section-label-container">
 				<label htmlFor="contactName">Nombre</label>
 				<input

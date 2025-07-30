@@ -131,18 +131,17 @@ a {
 	margin: 0 auto;
 }
 
-.blocked {
-	background-color: black;
-	color: black;
+body .blocked {
+	display: none;
 }
 
-.passed {
+body .passed {
 	background-color: transparent;
 	color: unset;
 }
 
-.surrendered {
-	background-color: red;
+body .surrendered {
+	background-color: rgba(255, 0, 0, 0.1);
 }
 
 /* ---Tablets */

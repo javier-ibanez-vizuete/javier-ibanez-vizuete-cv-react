@@ -7,13 +7,13 @@ import { Skills } from "../Skills/Skills";
 import { DevLanguages } from "../DevLanguages/DevLenguages";
 import { LanguagesList } from "../LanguagesList/LanguagesList";
 
-export const Education = ({ cvData }) => {
+export const Education = ({ cvData, gameResult }) => {
 	const [educationTab, setEducationTab] = useState(EducationTabs.EDUCATION);
 
 	const { skills, devLanguages, languages } = cvData;
 
 	return (
-		<section className="education-section">
+		<section className={`education-section ${gameResult?.moleSmasher}`}>
 			<h2 className="title">Formación</h2>
 			<EducationNav educationTab={educationTab} setEducationTab={setEducationTab} />
 			{educationTab === EducationTabs.EDUCATION && <EducationList cvData={cvData} />}

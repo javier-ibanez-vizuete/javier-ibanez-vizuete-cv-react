@@ -6,7 +6,7 @@ import linkedInLogoAvif from "../../assets/icons/linkedin/logo-linkedin.png";
 
 export const Profile = ({ cvData, gameResult }) => {
 	return (
-		<section className={`profile-section ${gameResult.secretNumber}`}>
+		<section className={`profile-section ${gameResult?.secretNumber}`}>
 			<h3 className="profile-section-title">PERFIL</h3>
 			<div className="profile-section-about">
 				<p>
