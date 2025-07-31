@@ -1,9 +1,13 @@
 :root {
 	--bg-color: #deded9;
-	--accent-bg-color: #ffffff;
 	--primary-text-color: #003243;
 	--secondary-text-color: #ffffff;
 	--links-text-color: #ff4400;
+
+	--bg-color-dark: #474545;
+	--primary-text-color-dark: #ffffff;
+	--secondary-text-color-dark: #003243;
+	--btn-xtra-color-dark: #888;
 
 	--btn-primary-color: #ff4400;
 	--btn-primary-color-hover: #eb4306;

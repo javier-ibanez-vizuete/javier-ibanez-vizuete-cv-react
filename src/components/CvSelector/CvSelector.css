@@ -5,6 +5,13 @@
 	align-items: center;
 	gap: 2rem;
 	flex: 1;
+
+	position: relative;
+}
+
+.cv-selector-modal .night-mode {
+	position: absolute;
+	top: 10px;
 }
 
 .cv-selector-btns-container {

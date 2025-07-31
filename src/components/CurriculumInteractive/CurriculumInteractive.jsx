@@ -56,6 +56,8 @@ export const CurriculumInteractive = ({
 	onFormSubmit,
 	onInputChange,
 	onDeleteForm,
+	nightMode,
+	onToggleNightMode,
 }) => {
 	const [activeTab, setActiveTab] = useState(null);
 	const [gameNumber, setGameNumber] = useState(1);
@@ -315,7 +317,7 @@ export const CurriculumInteractive = ({
 					/>
 				)}
 			</main>
-			<Footer cvView={cvView} setCvView={setCvView}>
+			<Footer cvView={cvView} setCvView={setCvView} nightMode={nightMode} onToggleNightMode={onToggleNightMode}>
 				{activeTab === cvInteractiveTabs.GAMES && gameNumber < 5 && (
 					<Button className={"btn primary-btn"} bodyText={"Rendirse"} handleButton={handleSurrenderButton} />
 				)}

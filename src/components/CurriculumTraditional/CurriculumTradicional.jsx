@@ -16,6 +16,8 @@ export const CurriculumTradicional = ({
 	onDeleteForm,
 	onInputChange,
 	setCvView,
+	nightMode,
+	onToggleNightMode,
 }) => {
 	const [activeTab, setActiveTab] = useState(Tabs.PROFILE);
 
@@ -40,7 +42,7 @@ export const CurriculumTradicional = ({
 					/>
 				)}
 			</main>
-			<Footer setCvView={setCvView} activeTab={activeTab} setActiveTab={setActiveTab} />
+			<Footer setCvView={setCvView} activeTab={activeTab} setActiveTab={setActiveTab} nightMode={nightMode} onToggleNightMode={onToggleNightMode} />
 		</div>
 	);
 };

@@ -42,7 +42,7 @@ header {
 	padding: var(--spacing-sm) var(--spacing-md);
 	border: none;
 	cursor: pointer;
-	background: var(--btn-xtra-color);
+	background-color: var(--btn-xtra-color);
 	border-radius: var(--border-radius-card);
 }
 
@@ -92,6 +92,59 @@ header {
 
 main {
 	flex: 1;
+}
+
+/*  ---------------MODO NOCHE ------------------ */
+.app-container.night-mode-active .grid-overlay {
+	background-color: var(--bg-color-dark);
+}
+
+.app-container.night-mode-active .grid-cell {
+	border: 1px solid rgba(141, 131, 131, 0.4);
+}
+
+.app-container.night-mode-active h1,
+.app-container.night-mode-active h2,
+.app-container.night-mode-active h3,
+.app-container.night-mode-active h4,
+.app-container.night-mode-active h5,
+.app-container.night-mode-active h6,
+.app-container.night-mode-active p,
+.app-container.night-mode-active li,
+.app-container.night-mode-active small,
+.app-container.night-mode-active span,
+.app-container.night-mode-active button,
+.app-container.night-mode-active label,
+.app-container.night-mode-active input,
+.app-container.night-mode-active input::placeholder,
+.app-container.night-mode-active .actived-select,
+.app-container.night-mode-active select,
+.app-container.night-mode-active textarea,
+.app-container.night-mode-active textarea::placeholder {
+	color: var(--primary-text-color-dark);
+}
+
+.app-container.night-mode-active .tab {
+	background-color: var(--btn-xtra-color-dark);
+	color: var(--secondary-text-color-dark);
+}
+
+.app-container.night-mode-active .tab.active {
+	background-color: var(--btn-primary-color);
+}
+
+.app-container.night-mode-active .tab:hover {
+	background-color: var(--btn-xtra-color-dark);
+}
+
+.app-container.night-mode-active .primary-btn {
+	color: var(--secondary-text-color-dark);
+}
+
+.app-container.night-mode-active .contact-section-label-container input,
+.app-container.night-mode-active .contact-section-label-container select,
+.app-container.night-mode-active .contact-section-label-container textarea {
+	border-color: var(--primary-text-color-dark);
 }
 
 /* ---Tablets */
