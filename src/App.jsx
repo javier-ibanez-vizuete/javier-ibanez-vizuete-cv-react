@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import "./App.css";
 import { CvSelector } from "./components/CvSelector/CvSelector";
 import { AppTabs } from "./components/CvSelector/AppTabs";
@@ -15,10 +15,15 @@ const INITIAL_FORM_STATE = {
 };
 
 export const App = () => {
+	const [nightMode, setNightMode] = useState(false);
 	const [cvView, setCvView] = useState(null);
 	const [cvData, setCvData] = useState(CV_DATA);
 	const [form, setForm] = useState(INITIAL_FORM_STATE);
 	const [error, setError] = useState("");
+
+	const onToggleNightMode = () => {
+		setNightMode((prev) => !prev);
+	};
 
 	const onInputChange = (event) => {
 		setError("");
@@ -52,9 +57,11 @@ export const App = () => {
 	};
 
 	return (
-		<div className="app-container container">
+		<div className={`app-container container ${nightMode ? "night-mode-active" : ""}`}>
 			<GridBackground />
-			{!cvView && <CvSelector setCvView={setCvView} />}
+			{!cvView && (
+				<CvSelector setCvView={setCvView} nightMode={nightMode} onToggleNightMode={onToggleNightMode} />
+			)}
 			{cvView === AppTabs.CV_TRADICIONAL && (
 				<CurriculumTradicional
 					cvData={cvData}
@@ -64,6 +71,8 @@ export const App = () => {
 					onInputChange={onInputChange}
 					onDeleteForm={onDeleteForm}
 					setCvView={setCvView}
+					nightMode={nightMode}
+					onToggleNightMode={onToggleNightMode}
 				/>
 			)}
 			{cvView === AppTabs.CV_INTERACTIVE && (
@@ -77,6 +86,8 @@ export const App = () => {
 					onFormSubmit={onFormSubmit}
 					onInputChange={onInputChange}
 					onDeleteForm={onDeleteForm}
+					nightMode={nightMode}
+					onToggleNightMode={onToggleNightMode}
 				/>
 			)}
 		</div>
