@@ -172,10 +172,6 @@ body .passed {
 	color: unset;
 }
 
-body .surrendered {
-	background-color: rgba(255, 0, 0, 0.1);
-}
-
 /* ---Tablets */
 @media (width >= 768px) {
 	:root {

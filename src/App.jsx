@@ -46,6 +46,14 @@ export const App = () => {
 	};
 
 	const handleCurriculumView = (value) => {
+		
+		
+		removeFromStorage("form_data");
+		setForm(INITIAL_FORM_STATE);
+
+		removeFromStorage("error_text");
+		setError("");
+
 		setCvView(value);
 		saveDataInStorage("cv_view", value);
 	};

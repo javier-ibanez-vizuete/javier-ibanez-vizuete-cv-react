@@ -28,6 +28,8 @@ export const MoleSmasherGame = ({
 	winner,
 	handleMoleClick,
 }) => {
+	
+	
 	if (!startGame) return <GameExplanation gameNumber={gameNumber} handleStartGame={handleStartGame} lives={lives} />;
 
 	return (

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./DinamicText.css";
-import { cvInteractiveTabs } from "../CurriculumInteractive/CvInteractiveNavigation/cvInteractiveTabs";
 
 export const DinamicText = ({ text, speed, switchToGames, switchToMainScreen }) => {
 	const [currentText, setCurrentText] = useState("");

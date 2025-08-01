@@ -10,7 +10,7 @@ import { INITIAL_MOLE_STATES } from "../../utils/INITIAL_MOLE_STATES.js";
 import { INITIAL_BOARD, TURNS_TIC_TAC_TOE, WINNER_COMBOS } from "../../utils/TIC_TAC_TOE_INITIAL_STATS.js";
 import { CurriculumComplete } from "../CurriculumComplete/CurriculumComplete.jsx";
 import { Button } from "../Button/Button.jsx";
-import { getDataFromStorage, saveDataInStorage } from "../../helpers/localStorage/localStorage.js";
+import { getDataFromStorage, removeFromStorage, saveDataInStorage } from "../../helpers/localStorage/localStorage.js";
 
 const getRandomNumber = () => {
 	const randomNumber = Math.round(Math.random() * 100);
@@ -47,6 +47,13 @@ const getRandomIndex = (arrayLength) => {
 	return randomIndex;
 };
 
+const INITIAL_GAME_RESULT_STATES = {
+	secretNumber: "blocked",
+	secretWord: "blocked",
+	moleSmasher: "blocked",
+	ticTacToe: "blocked",
+};
+
 export const CurriculumInteractive = ({
 	cvView,
 	switchToMainScreen,
@@ -65,85 +72,195 @@ export const CurriculumInteractive = ({
 		if (activeTabInteractiveFromStorage) return activeTabInteractiveFromStorage;
 		return null;
 	});
-	const [gameNumber, setGameNumber] = useState(1);
-	const [lives, setLives] = useState(10);
-	const [startGame, setStartGame] = useState(false);
-	const [winner, setWinner] = useState(false);
-	const [gameResult, setGameResult] = useState({
-		secretNumber: "blocked",
-		secretWord: "blocked",
-		moleSmasher: "blocked",
-		ticTacToe: "blocked",
+	const [gameNumber, setGameNumber] = useState(() => {
+		const gameNumberFromStorage = getDataFromStorage("game_number");
+		if (gameNumberFromStorage) return Number(gameNumberFromStorage);
+		return 1;
+	});
+	const [lives, setLives] = useState(() => {
+		const livesFromStorage = getDataFromStorage("lives");
+		return livesFromStorage ?? 10;
+	});
+
+	const [startGame, setStartGame] = useState(() => {
+		const startGameFromStorage = getDataFromStorage("is_game_started");
+		if (startGameFromStorage) return startGameFromStorage;
+		return false;
+	});
+	const [winner, setWinner] = useState(() => {
+		const winnerFromStorage = getDataFromStorage("winner");
+		if (winnerFromStorage) return winnerFromStorage;
+		return false;
+	});
+
+	const [gameResult, setGameResult] = useState(() => {
+		const gameResultFromStorage = getDataFromStorage("game_result");
+		return gameResultFromStorage ?? INITIAL_GAME_RESULT_STATES;
 	});
 
 	// Primer juego
-	const [secretNumber, setSecretNumber] = useState(() => getRandomNumber());
+	const [secretNumber, setSecretNumber] = useState(() => {
+		const secretNumberFromStorage = getDataFromStorage("secret_number");
+		return secretNumberFromStorage ?? getRandomNumber();
+	});
 
 	// Segundo juego
-	const [longWord, setLongWord] = useState(() => getRandomWord());
-	const [secretWord, setSecretWord] = useState(() => createSecretWord(longWord));
+	const [longWord, setLongWord] = useState(() => {
+		const longWordFromStorage = getDataFromStorage("long_word");
+		if (longWordFromStorage) return longWordFromStorage;
+		return getRandomWord();
+	});
+	const [secretWord, setSecretWord] = useState(() => {
+		const secretWordFromStorage = getDataFromStorage("secret_word");
+		if (secretWordFromStorage) return secretWordFromStorage;
+		return createSecretWord(longWord);
+	});
 
 	// Tercer juego
-	const [moleHoles, setMoleHoles] = useState(INITIAL_MOLE_STATES);
-	const [moles, setMoles] = useState(0);
+	const [moleHoles, setMoleHoles] = useState(() => {
+		const moleHolesFromStorage = getDataFromStorage("mole_holes");
+		return moleHolesFromStorage ?? INITIAL_MOLE_STATES;
+	});
+	const [moles, setMoles] = useState(() => {
+		const molesFromStorage = getDataFromStorage("moles");
+		return molesFromStorage ?? 0;
+	});
 
 	// Cuarto juego
-	const [board, setBoard] = useState(INITIAL_BOARD);
-	const [turn, setTurn] = useState(TURNS_TIC_TAC_TOE.X);
+	const [board, setBoard] = useState(() => {
+		const boardFromStorage = getDataFromStorage("board");
+		return boardFromStorage ?? INITIAL_BOARD;
+	});
+	const [turn, setTurn] = useState(() => {
+		const turnFromStorage = getDataFromStorage("turn");
+		if (turnFromStorage) return turnFromStorage;
+		return TURNS_TIC_TAC_TOE.X;
+	});
 
 	const switchToGames = () => {
 		saveDataInStorage("active_tab_interactive", cvInteractiveTabs.GAMES);
 		setActiveTab(cvInteractiveTabs.GAMES);
 	};
 
+	const handleInteractiveActiveTabs = (value) => {
+		setActiveTab(value);
+		saveDataInStorage("active_tab_interactive", value);
+	};
+
 	const handleGameNumber = () => {
 		setGameResult((prevGameResult) => {
 			const { secretNumber, secretWord, moleSmasher, ticTacToe } = prevGameResult;
-			if (gameNumber === 1 && secretNumber !== "surrendered")
+			if (gameNumber === 1 && secretNumber !== "surrendered") {
+				saveDataInStorage("game_result", { ...prevGameResult, secretNumber: "passed" });
 				return { ...prevGameResult, secretNumber: "passed" };
-			if (gameNumber === 2 && secretWord !== "surrendered") return { ...prevGameResult, secretWord: "passed" };
-			if (gameNumber === 3 && moleSmasher !== "surrendered") return { ...prevGameResult, moleSmasher: "passed" };
-			if (gameNumber === 4 && ticTacToe !== "surrendered") return { ...prevGameResult, ticTacToe: "passed" };
+			}
+
+			if (gameNumber === 2 && secretWord !== "surrendered") {
+				saveDataInStorage("game_result", { ...prevGameResult, secretWord: "passed" });
+				return { ...prevGameResult, secretWord: "passed" };
+			}
+			if (gameNumber === 3 && moleSmasher !== "surrendered") {
+				saveDataInStorage("game_result", { ...prevGameResult, moleSmasher: "passed" });
+				return { ...prevGameResult, moleSmasher: "passed" };
+			}
+			if (gameNumber === 4 && ticTacToe !== "surrendered") {
+				saveDataInStorage("game_result", { ...prevGameResult, ticTacToe: "passed" });
+				return { ...prevGameResult, ticTacToe: "passed" };
+			}
 			return prevGameResult;
 		});
 
-		setGameNumber((prev) => prev + 1);
+		if (winner)
+			return setTimeout(() => {
+				handleGameNumber();
+			}, 5000);
+
+		setGameNumber((prev) => {
+			saveDataInStorage("game_number", prev + 1);
+			return prev + 1;
+		});
+
+		saveDataInStorage("lives", 10);
 		setLives(10);
+
+		saveDataInStorage("is_game_started", false);
 		setStartGame(false);
+
+		saveDataInStorage("winner", false);
 		setWinner(false);
+
+		saveDataInStorage("active_tab_interactive", cvInteractiveTabs.CV_INTERACTIVE);
 		setActiveTab(cvInteractiveTabs.CV_INTERACTIVE);
 	};
 
 	const handleStartGame = () => {
-		if (!startGame) return setStartGame((prev) => !prev);
+		if (!startGame)
+			return setStartGame((prev) => {
+				saveDataInStorage("is_game_started", !prev);
+				return !prev;
+			});
 	};
 
 	const decreaseLive = () => {
-		setLives((prev) => prev - 1);
-		if (lives === 0) return setError("");
+		setLives((prev) => {
+			saveDataInStorage("lives", prev - 1);
+			return prev - 1;
+		});
+		if (lives === 0)
+			return setError(() => {
+				removeFromStorage("error_text");
+				return "";
+			});
 	};
 
 	const handleRestartGame = () => {
+		removeFromStorage("game_number");
 		setGameNumber(1);
+
+		removeFromStorage("lives");
 		setLives(10);
-		setSecretNumber(() => getRandomNumber());
+
+		setSecretNumber(() => {
+			removeFromStorage("secret_number");
+			return getRandomNumber();
+		});
+
+		removeFromStorage("is_game_started");
 		setStartGame(false);
-		setLongWord(() => getRandomWord());
+
+		setLongWord(() => {
+			removeFromStorage("long_word");
+			return getRandomWord();
+		});
+
+		removeFromStorage("mole_holes");
 		setMoleHoles(INITIAL_MOLE_STATES);
+
+		removeFromStorage("moles");
 		setMoles(0);
 	};
 
 	const onCheckingLetter = (letter) => {
+		removeFromStorage("error_text");
 		setError("");
 		const buttonLetter = letter.toLowerCase();
 		if (winner) return;
 
 		if (longWord.includes(buttonLetter) && secretWord.includes(buttonLetter))
-			return setError(`LA LETRA (${letter.toUpperCase()}) YA EXISTE.`);
+			return setError(() => {
+				saveDataInStorage("error_text", `LA LETRA (${letter.toUpperCase()}) YA EXISTE.`);
+				return `LA LETRA (${letter.toUpperCase()}) YA EXISTE.`;
+			});
 
 		if (!longWord.includes(buttonLetter)) {
-			setError(`LA PALABRA NO CONTIENE LA LETRA (${letter})`);
-			return setLives((prev) => prev - 1);
+			setError(() => {
+				saveDataInStorage("error_text", `LA PALABRA NO CONTIENE LA LETRA (${letter})`);
+				return `LA PALABRA NO CONTIENE LA LETRA (${letter})`;
+			});
+			return setLives((prev) => {
+				saveDataInStorage("lives", prev - 1);
+				return prev - 1;
+			});
 		}
 
 		const newSecretWordArray = secretWord.split("");
@@ -153,33 +270,50 @@ export const CurriculumInteractive = ({
 		});
 
 		const newSecretWord = newSecretWordArray.join("");
+		saveDataInStorage("secret_word", newSecretWord);
 		setSecretWord(newSecretWord);
 
 		if (!newSecretWord.includes("_")) {
 			setTimeout(() => {
 				handleGameNumber();
 			}, 6000);
-			return setWinner((prev) => !prev);
+			return setWinner((prev) => {
+				saveDataInStorage("winner", !prev);
+				return !prev;
+			});
 		}
 	};
 
 	const handleMoleClick = (index) => {
 		if (!moleHoles[index].hasMole && moles < 5) {
-			setLives((prev) => prev - 1);
+			setLives((prev) => {
+				saveDataInStorage("lives", prev - 1);
+				return prev - 1;
+			});
 			return;
 		}
 
-		setMoles((prev) => prev + 1);
+		setMoles((prev) => {
+			saveDataInStorage("moles", prev + 1);
+			return prev + 1;
+		});
 
-		setMoleHoles((prev) =>
-			prev.map((hole, indexHole) => (index === indexHole ? { ...hole, isSmashed: true } : hole))
-		);
+		setMoleHoles((prev) => {
+			saveDataInStorage(
+				"mole_holes",
+				prev.map((hole, indexHole) => (index === indexHole ? { ...hole, isSmashed: true } : hole))
+			);
+			return prev.map((hole, indexHole) => (index === indexHole ? { ...hole, isSmashed: true } : hole));
+		});
 		return;
 	};
 
 	useEffect(() => {
 		if (moles < 5) return;
-		setWinner((prev) => !prev);
+		setWinner((prev) => {
+			saveDataInStorage("winner", !prev);
+			return !prev;
+		});
 		const timeOut = setTimeout(() => {
 			handleGameNumber();
 			return clearTimeout(timeOut);
@@ -191,7 +325,9 @@ export const CurriculumInteractive = ({
 			setMoleHoles((prev) => {
 				const hasMole = prev.some((hole) => hole.hasMole);
 
-				if (hasMole) return INITIAL_MOLE_STATES.map((hole) => ({ ...hole }));
+				if (hasMole) {
+					return INITIAL_MOLE_STATES.map((hole) => ({ ...hole }));
+				}
 				if (!hasMole) {
 					const randomIndex = getRandomIndex(prev.length);
 					return prev.map((hole, index) => ({ ...hole, hasMole: index === randomIndex }));
@@ -222,24 +358,36 @@ export const CurriculumInteractive = ({
 		const newboard = [...board];
 		newboard[index] = turn;
 		setBoard(newboard);
+		saveDataInStorage("board", newboard);
 
 		const newTurn = turn === TURNS_TIC_TAC_TOE.X ? TURNS_TIC_TAC_TOE.O : TURNS_TIC_TAC_TOE.X;
 		setTurn(newTurn);
+		saveDataInStorage("turn", newTurn);
 
 		const newWinner = checkTicTacWinner(newboard);
 
 		if (newWinner) {
-			setWinner((prev) => !prev);
+			setWinner((prev) => {
+				saveDataInStorage("winner", !prev);
+				return !prev;
+			});
 			setTimeout(() => {
 				handleGameNumber();
+				saveDataInStorage("active_tab_interactive", cvInteractiveTabs.CV_INTERACTIVE);
 				setActiveTab(cvInteractiveTabs.CV_INTERACTIVE);
 			}, 6000);
 		}
 		const BoardFull = newboard.every((square) => square !== null);
 
 		if (BoardFull) {
-			setLives((prev) => prev - 1);
+			setLives((prev) => {
+				saveDataInStorage("lives", prev - 1);
+				return prev - 1;
+			});
 			setTurn(TURNS_TIC_TAC_TOE.X);
+			removeFromStorage("turn");
+
+			removeFromStorage("board");
 			setBoard(INITIAL_BOARD);
 			return;
 		}
@@ -261,25 +409,49 @@ export const CurriculumInteractive = ({
 			const newBoard = [...board];
 			newBoard[randomEmptyPosition] = TURNS_TIC_TAC_TOE.O;
 			setBoard(newBoard);
+			saveDataInStorage("board", newBoard);
 
 			const newWinner = checkTicTacWinner(newBoard);
 			if (newWinner) {
 				setBoard(INITIAL_BOARD);
+				removeFromStorage("board");
+
 				setTurn(TURNS_TIC_TAC_TOE.X);
-				setLives((prev) => prev - 1);
+				saveDataInStorage("turn", TURNS_TIC_TAC_TOE.X);
+				setLives((prev) => {
+					saveDataInStorage("lives", prev - 1);
+					return prev - 1;
+				});
 				return;
 			}
 			setTurn(TURNS_TIC_TAC_TOE.X);
+			saveDataInStorage("turn", TURNS_TIC_TAC_TOE.X);
 		}, 1000);
 
 		return () => clearTimeout(timeOut);
 	}, [turn, board, winner]);
 
 	const handleSurrenderButton = () => {
-		if (gameNumber === 1) setGameResult((prev) => ({ ...prev, secretNumber: "surrendered" }));
-		if (gameNumber === 2) setGameResult((prev) => ({ ...prev, secretWord: "surrendered" }));
-		if (gameNumber === 3) setGameResult((prev) => ({ ...prev, moleSmasher: "surrendered" }));
-		if (gameNumber === 4) setGameResult((prev) => ({ ...prev, ticTacToe: "surrendered" }));
+		if (gameNumber === 1)
+			setGameResult((prev) => {
+				saveDataInStorage("game_result", { ...prev, secretNumber: "surrendered" });
+				return { ...prev, secretNumber: "surrendered" };
+			});
+		if (gameNumber === 2)
+			setGameResult((prev) => {
+				saveDataInStorage("game_result", { ...prev, secretWord: "surrendered" });
+				return { ...prev, secretWord: "surrendered" };
+			});
+		if (gameNumber === 3)
+			setGameResult((prev) => {
+				saveDataInStorage("game_result", { ...prev, moleSmasher: "surrendered" });
+				return { ...prev, moleSmasher: "surrendered" };
+			});
+		if (gameNumber === 4)
+			setGameResult((prev) => {
+				saveDataInStorage("game_result", { ...prev, ticTacToe: "surrendered" });
+				return { ...prev, ticTacToe: "surrendered" };
+			});
 		handleGameNumber();
 		return;
 	};
@@ -288,7 +460,10 @@ export const CurriculumInteractive = ({
 	return (
 		<div className="curriculum-interactive-container">
 			<header>
-				<CvInteractiveNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+				<CvInteractiveNavigation
+					activeTab={activeTab}
+					handleInteractiveActiveTabs={handleInteractiveActiveTabs}
+				/>
 			</header>
 			<main id="main">
 				{activeTab === cvInteractiveTabs.GAMES && (
