@@ -1,7 +1,7 @@
 import "./Navigation.css";
 import { Tabs } from "./Tabs";
 
-export const Navigation = ({ activeTab, setActiveTab }) => {
+export const Navigation = ({ activeTab, handleActiveTab }) => {
 	return (
 		<nav className="navigation">
 			{Object.entries(Tabs).map(([property, value]) => {
@@ -9,7 +9,7 @@ export const Navigation = ({ activeTab, setActiveTab }) => {
 					<button
 						key={property}
 						className={`tab ${activeTab === value ? "active" : ""}`}
-						onClick={() => setActiveTab(value)}
+						onClick={() => handleActiveTab(value)}
 					>
 						{value}
 					</button>

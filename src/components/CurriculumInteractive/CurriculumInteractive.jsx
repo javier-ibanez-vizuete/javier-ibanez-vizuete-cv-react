@@ -10,6 +10,7 @@ import { INITIAL_MOLE_STATES } from "../../utils/INITIAL_MOLE_STATES.js";
 import { INITIAL_BOARD, TURNS_TIC_TAC_TOE, WINNER_COMBOS } from "../../utils/TIC_TAC_TOE_INITIAL_STATS.js";
 import { CurriculumComplete } from "../CurriculumComplete/CurriculumComplete.jsx";
 import { Button } from "../Button/Button.jsx";
+import { getDataFromStorage, saveDataInStorage } from "../../helpers/localStorage/localStorage.js";
 
 const getRandomNumber = () => {
 	const randomNumber = Math.round(Math.random() * 100);
@@ -48,7 +49,7 @@ const getRandomIndex = (arrayLength) => {
 
 export const CurriculumInteractive = ({
 	cvView,
-	setCvView,
+	switchToMainScreen,
 	cvData,
 	form,
 	error,
@@ -59,7 +60,11 @@ export const CurriculumInteractive = ({
 	nightMode,
 	onToggleNightMode,
 }) => {
-	const [activeTab, setActiveTab] = useState(null);
+	const [activeTab, setActiveTab] = useState(() => {
+		const activeTabInteractiveFromStorage = getDataFromStorage("active_tab_interactive");
+		if (activeTabInteractiveFromStorage) return activeTabInteractiveFromStorage;
+		return null;
+	});
 	const [gameNumber, setGameNumber] = useState(1);
 	const [lives, setLives] = useState(10);
 	const [startGame, setStartGame] = useState(false);
@@ -85,6 +90,11 @@ export const CurriculumInteractive = ({
 	// Cuarto juego
 	const [board, setBoard] = useState(INITIAL_BOARD);
 	const [turn, setTurn] = useState(TURNS_TIC_TAC_TOE.X);
+
+	const switchToGames = () => {
+		saveDataInStorage("active_tab_interactive", cvInteractiveTabs.GAMES);
+		setActiveTab(cvInteractiveTabs.GAMES);
+	};
 
 	const handleGameNumber = () => {
 		setGameResult((prevGameResult) => {
@@ -274,7 +284,7 @@ export const CurriculumInteractive = ({
 		return;
 	};
 
-	if (!activeTab) return <InitialModal setActiveTab={setActiveTab} setCvView={setCvView} />;
+	if (!activeTab) return <InitialModal switchToGames={switchToGames} switchToMainScreen={switchToMainScreen} />;
 	return (
 		<div className="curriculum-interactive-container">
 			<header>
@@ -317,7 +327,12 @@ export const CurriculumInteractive = ({
 					/>
 				)}
 			</main>
-			<Footer cvView={cvView} setCvView={setCvView} nightMode={nightMode} onToggleNightMode={onToggleNightMode}>
+			<Footer
+				cvView={cvView}
+				switchToMainScreen={switchToMainScreen}
+				nightMode={nightMode}
+				onToggleNightMode={onToggleNightMode}
+			>
 				{activeTab === cvInteractiveTabs.GAMES && gameNumber < 5 && (
 					<Button className={"btn primary-btn"} bodyText={"Rendirse"} handleButton={handleSurrenderButton} />
 				)}

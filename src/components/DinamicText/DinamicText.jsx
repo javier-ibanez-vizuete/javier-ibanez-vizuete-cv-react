@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./DinamicText.css";
 import { cvInteractiveTabs } from "../CurriculumInteractive/CvInteractiveNavigation/cvInteractiveTabs";
 
-export const DinamicText = ({ text, speed, setActiveTab, setCvView }) => {
+export const DinamicText = ({ text, speed, switchToGames, switchToMainScreen }) => {
 	const [currentText, setCurrentText] = useState("");
 	const [index, setIndex] = useState(0);
 
@@ -21,12 +21,12 @@ export const DinamicText = ({ text, speed, setActiveTab, setCvView }) => {
 		<>
 			<p>{currentText}</p>
 			{index === text.length && (
-				<button className="btn primary-btn" onClick={() => setActiveTab(cvInteractiveTabs.GAMES)}>
+				<button className="btn primary-btn" onClick={switchToGames}>
 					Aceptar
 				</button>
 			)}
 			{index === text.length && (
-				<button className="btn secondary-btn" onClick={() => setCvView(null)}>
+				<button className="btn secondary-btn" onClick={switchToMainScreen}>
 					volver
 				</button>
 			)}

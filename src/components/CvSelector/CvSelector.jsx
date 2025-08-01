@@ -2,7 +2,7 @@ import "./CvSelector.css";
 import { AppTabs } from "./AppTabs.js";
 import { NightMode } from "../NightMode/NightMode.jsx";
 
-export const CvSelector = ({ setCvView, nightMode, onToggleNightMode }) => {
+export const CvSelector = ({ handleCurriculumView, nightMode, onToggleNightMode }) => {
 	return (
 		<section className="cv-selector-modal">
 			<NightMode
@@ -20,7 +20,7 @@ export const CvSelector = ({ setCvView, nightMode, onToggleNightMode }) => {
 							className={`cv-selector-btn ${
 								value === AppTabs.CV_TRADICIONAL ? "tradicional" : "interactive"
 							}`}
-							onClick={() => setCvView(value)}
+							onClick={() => handleCurriculumView(value)}
 						>
 							{value}
 						</button>
