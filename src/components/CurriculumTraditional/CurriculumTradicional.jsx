@@ -7,6 +7,7 @@ import { Experiences } from "../Experiences/Experiences";
 import { Education } from "../Education/Education";
 import { ContactSection } from "../ContactSection/ContactSection";
 import { Footer } from "../Footer/Footer";
+import { getDataFromStorage, saveDataInStorage } from "../../helpers/localStorage/localStorage";
 
 export const CurriculumTradicional = ({
 	cvData,
@@ -15,16 +16,30 @@ export const CurriculumTradicional = ({
 	onFormSubmit,
 	onDeleteForm,
 	onInputChange,
-	setCvView,
+	switchToMainScreen,
 	nightMode,
 	onToggleNightMode,
 }) => {
-	const [activeTab, setActiveTab] = useState(Tabs.PROFILE);
+	const [activeTab, setActiveTab] = useState(() => {
+		const activeTabFromStorage = getDataFromStorage("active_tab");
+		if (activeTabFromStorage) return activeTabFromStorage;
+		return Tabs.PROFILE;
+	});
+
+	const handleActiveTab = (value) => {
+		saveDataInStorage("active_tab", value);
+		setActiveTab(value);
+	};
+
+	const switchToContact = () => {
+		saveDataInStorage("active_tab", Tabs.CONTACT);
+		setActiveTab(Tabs.CONTACT);
+	};
 
 	return (
 		<div className="curriculum-tradicional-container">
 			<header>
-				<Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+				<Navigation activeTab={activeTab} handleActiveTab={handleActiveTab} />
 				<h2 className="title">Javier Ibáñez Vizuete</h2>
 			</header>
 			<main>
@@ -42,7 +57,13 @@ export const CurriculumTradicional = ({
 					/>
 				)}
 			</main>
-			<Footer setCvView={setCvView} activeTab={activeTab} setActiveTab={setActiveTab} nightMode={nightMode} onToggleNightMode={onToggleNightMode} />
+			<Footer
+				switchToMainScreen={switchToMainScreen}
+				activeTab={activeTab}
+				switchToContact={switchToContact}
+				nightMode={nightMode}
+				onToggleNightMode={onToggleNightMode}
+			/>
 		</div>
 	);
 };

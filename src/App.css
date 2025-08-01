@@ -147,6 +147,18 @@ main {
 	border-color: var(--primary-text-color-dark);
 }
 
+.app-container.night-mode-active .floating-text.result-passed {
+	color: rgba(0, 128, 0, 0.5);
+}
+
+.app-container.night-mode-active .floating-text.result-surrendered {
+		color: rgba(255, 0, 0, 0.3);
+}
+
+.app-container.night-mode-active .divisor-line {
+	background-color: var(--primary-text-color-dark);
+}
+
 /* ---Tablets */
 @media (width >= 768px) {
 	header {

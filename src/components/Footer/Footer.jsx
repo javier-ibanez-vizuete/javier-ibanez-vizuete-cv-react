@@ -1,16 +1,25 @@
+import { removeFromStorage } from "../../helpers/localStorage/localStorage";
 import { AppTabs } from "../CvSelector/AppTabs";
 import { Tabs } from "../Navigation/Tabs";
 import { NightMode } from "../NightMode/NightMode";
 import "./Footer.css";
 
-export const Footer = ({ children, cvView, setCvView, activeTab, setActiveTab, nightMode, onToggleNightMode }) => {
+export const Footer = ({
+	children,
+	cvView,
+	switchToMainScreen,
+	activeTab,
+	switchToContact,
+	nightMode,
+	onToggleNightMode,
+}) => {
 	return (
 		<footer>
-			<button className="btn secondary-btn" onClick={() => setCvView(null)}>
+			<button className="btn secondary-btn" onClick={switchToMainScreen}>
 				Cambiar Curriculum
 			</button>
 			{activeTab !== Tabs.CONTACT && cvView !== AppTabs.CV_INTERACTIVE && (
-				<button onClick={() => setActiveTab(Tabs.CONTACT)} className="btn primary-btn">
+				<button onClick={() => switchToContact(Tabs.CONTACT)} className="btn primary-btn">
 					Contacto
 				</button>
 			)}
