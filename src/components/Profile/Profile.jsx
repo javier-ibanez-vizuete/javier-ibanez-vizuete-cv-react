@@ -4,6 +4,31 @@ import linkedInLogoPng from "../../assets/icons/linkedin/logo-linkedin.png";
 import linkedInLogoWebp from "../../assets/icons/linkedin/logo-linkedin.png";
 import linkedInLogoAvif from "../../assets/icons/linkedin/logo-linkedin.png";
 
+/**
+ * Profile component
+ *
+ * Renders the user’s profile section with contact info, professional summary,
+ * and a link to their portfolio and LinkedIn profile. Optionally hides children
+ * if the `gameResult.secretNumber` is set to "blocked".
+ *
+ * Uses:
+ * - `children` for additional content (e.g., profile picture or badges) rendered when not blocked
+ * - `cvData.personalInfo` to display location, email, portfolio URL, and summary
+ * - `gameResult?.secretNumber` to conditionally add CSS class and render children
+ * - Responsive picture element for the LinkedIn logo with AVIF, WebP, and PNG fallbacks
+ *
+ * @param {object} props
+ * @param {ReactNode} [props.children]       Optional content displayed above the profile title, hidden when blocked
+ * @param {object}     props.cvData          Curriculum data object containing `personalInfo`
+ * @param {object}     props.cvData.personalInfo
+ * @param {string}     props.cvData.personalInfo.location  User’s location text
+ * @param {string}     props.cvData.personalInfo.email     User’s email address
+ * @param {string}     props.cvData.personalInfo.portfolio URL to user’s portfolio (opens in new tab)
+ * @param {string}     props.cvData.personalInfo.summary   Brief professional summary text
+ * @param {object}     [props.gameResult]    Optional game result controlling visibility
+ * @param {string}     [props.gameResult.secretNumber]    "blocked" to hide children and add blocked class
+ * @returns {JSX.Element} The complete profile section
+ */
 export const Profile = ({ children, cvData, gameResult }) => {
 	return (
 		<section className={`profile-section ${gameResult?.secretNumber}`}>

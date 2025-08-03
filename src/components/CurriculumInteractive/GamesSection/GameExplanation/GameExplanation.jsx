@@ -1,5 +1,16 @@
 import "./GameExplanation.css";
 
+/**
+ * GameExplanation component
+ *
+ * Renders a brief explanation for one of four mini-games depending on the `gameNumber` prop.
+ * Includes instructions and a button to start the game.
+ *
+ * Props:
+ * @param {number} gameNumber - Identifies the current game (1: Secret Number, 2: Hangman, 3: Whack-a-Mole, 4: Tic Tac Toe).
+ * @param {function} handleStartGame - Callback function triggered when the user clicks the start button.
+ * @param {number} lives - Number of lives the user has; used to display gameplay restrictions or loss conditions.
+ */
 export const GameExplanation = ({ gameNumber, handleStartGame, lives }) => {
 	if (gameNumber === 1)
 		return (
@@ -42,12 +53,17 @@ export const GameExplanation = ({ gameNumber, handleStartGame, lives }) => {
 			</div>
 		);
 
-		if(gameNumber === 4) return (<div className="game-explanation-container">
-			<h2>TRES EN RAYA</h2>
-			<p>En este Juego deberas Ganar a la Maquina</p>
-			<p>Colocando 3 cruces en horizontal, vertical o diagonal</p>
-			<p>Si pierdes o empatas Perderas una vida</p>
-			<p>Si te quedas sin vidas, pierdes el juego</p>
-			<button onClick={handleStartGame} className="btn primary-btn">Comenzar</button>
-		</div>)
+	if (gameNumber === 4)
+		return (
+			<div className="game-explanation-container">
+				<h2>TRES EN RAYA</h2>
+				<p>En este Juego deberas Ganar a la Maquina</p>
+				<p>Colocando 3 cruces en horizontal, vertical o diagonal</p>
+				<p>Si pierdes o empatas Perderas una vida</p>
+				<p>Si te quedas sin vidas, pierdes el juego</p>
+				<button onClick={handleStartGame} className="btn primary-btn">
+					Comenzar
+				</button>
+			</div>
+		);
 };

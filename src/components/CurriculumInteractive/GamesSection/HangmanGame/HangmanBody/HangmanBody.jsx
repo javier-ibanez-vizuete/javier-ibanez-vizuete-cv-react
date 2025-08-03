@@ -1,6 +1,16 @@
 import "./HangmanBody.css";
 import { HangmanBodyPiece } from "./HangmanBodyPiece/HangmanBodyPiece";
 
+/**
+ * HangmanBody
+ *
+ * Renders the hangman gallows and body parts progressively based on remaining lives.
+ *
+ * @param {Object} props
+ * @param {number} props.lives – Number of remaining lives (0–10). Each decrement adds one more piece.
+ *
+ * @returns {JSX.Element} The assembled hangman drawing.
+ */
 export const HangmanBody = ({ lives }) => {
 	return (
 		<div className="hangman-body-container">

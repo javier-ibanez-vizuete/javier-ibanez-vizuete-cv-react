@@ -6,6 +6,21 @@ const INITIAL_WINDOW_SIZE = {
 	height: window.innerHeight,
 };
 
+/**
+ * FullscreenConfetti component
+ *
+ * Renders a full-window confetti animation that automatically adjusts
+ * to the current viewport size. Listens for window resize events to
+ * update its dimensions and ensure the confetti always covers the
+ * entire browser window.
+ *
+ * Uses:
+ * - `window.innerWidth` and `window.innerHeight` for initial size
+ * - `useState` to hold the current width/height
+ * - `useEffect` to subscribe to resize events and clean up on unmount
+ *
+ * @returns {JSX.Element} A ReactConfetti element sized to fill the viewport
+ */
 export const FullscreenConfetti = () => {
 	const [windowSize, setWindowSize] = useState(INITIAL_WINDOW_SIZE);
 

@@ -1,5 +1,19 @@
 import "./CircularProgressBar.css";
 
+/**
+ * CircularProgressBar Component
+ *
+ * This component displays a circular progress bar representing language proficiency levels.
+ * The circle's fill percentage changes depending on the skill level passed.
+ * It visually communicates the user's level in a particular language.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} props.name - The name of the language or skill to display in the circle
+ * @param {"Nativo" | "Avanzado" | "Intermedio" | "Basico"} props.level - The proficiency level
+ *
+ * @returns {JSX.Element} A stylized circular progress bar with name and level
+ */
 export const CircularProgressBar = ({ name, level }) => {
 	let percentage;
 	switch (level) {
