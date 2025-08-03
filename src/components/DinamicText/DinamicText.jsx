@@ -1,0 +1,34 @@
+import { useEffect, useState } from "react";
+import "./DinamicText.css";
+
+export const DinamicText = ({ text, speed, switchToGames, switchToMainScreen }) => {
+	const [currentText, setCurrentText] = useState("");
+	const [index, setIndex] = useState(0);
+
+	useEffect(() => {
+		if (index < text.length) {
+			const timeout = setTimeout(() => {
+				setCurrentText((prev) => prev + text.charAt(index));
+				setIndex(index + 1);
+			}, speed);
+
+			return () => clearTimeout(timeout);
+		}
+	}, [index]);
+
+	return (
+		<>
+			<p>{currentText}</p>
+			{index === text.length && (
+				<button className="btn primary-btn" onClick={switchToGames}>
+					Aceptar
+				</button>
+			)}
+			{index === text.length && (
+				<button className="btn secondary-btn" onClick={switchToMainScreen}>
+					volver
+				</button>
+			)}
+		</>
+	);
+};
