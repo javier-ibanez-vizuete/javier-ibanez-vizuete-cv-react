@@ -24,7 +24,7 @@
 	padding: var(--spacing-sm) var(--spacing-2xl);
 	border-radius: var(--border-radius-card);
 	font-size: 1rem;
-	font-weight: 600;
+	font-weight: var(--font-weight-bold);
 	border: none;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
@@ -66,12 +66,12 @@
 }
 
 .linkedin-logo-container {
-    width: 60px;
+	width: 60px;
 }
 
 .linkedin-logo-container,
 .linkedin-logo-container picture {
 	display: flex;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 }
