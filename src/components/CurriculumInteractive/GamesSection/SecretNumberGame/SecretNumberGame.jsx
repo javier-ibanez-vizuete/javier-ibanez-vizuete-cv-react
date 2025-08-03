@@ -3,6 +3,25 @@ import "./SecretNumberGame.css";
 import { GameExplanation } from "../GameExplanation/GameExplanation";
 import { FullscreenConfetti } from "../../../FullscreenConfetti/FullscreenConfetti";
 
+/**
+ * SecretNumberGame
+ *
+ * Renders the “Secret Number” game interface, handling user input, validation,
+ * and game progression including win/loss states.
+ *
+ * @param {Object} props
+ * @param {number}  props.gameNumber        – Identifier for the current game session.
+ * @param {boolean} props.startGame         – Flag indicating if the game has started.
+ * @param {number}  props.lives             – Remaining lives count.
+ * @param {() => void} props.handleGameNumber – Callback to advance to the next game.
+ * @param {() => void} props.handleStartGame  – Callback to initiate the game.
+ * @param {() => void} props.decreaseLive     – Callback to decrement the life count.
+ * @param {number}  props.secretNumber      – The randomly selected number to guess.
+ * @param {string}  props.error             – Current error or hint message.
+ * @param {(msg: string) => void} props.setError – Setter for the error/hint message.
+ *
+ * @returns {JSX.Element} The SecretNumberGame component.
+ */
 export const SecretNumberGame = ({
 	gameNumber,
 	startGame,
@@ -17,6 +36,16 @@ export const SecretNumberGame = ({
 	const [inputNumber, setInputNumber] = useState("");
 	const [isWinner, setIsWinner] = useState(false);
 
+	/**
+	 * handleInputChange
+	 *
+	 * Handles changes to the input field for entering a number.
+	 * - Clears the input and state if the input is empty.
+	 * - Otherwise, resets any error and updates the input number state with the numeric value.
+	 *
+	 * @param {React.ChangeEvent<HTMLInputElement>} event - The input change event.
+	 * @returns {void}
+	 */
 	const handleInputChange = (event) => {
 		if (!event.target.value) {
 			setInputNumber("");
@@ -27,6 +56,23 @@ export const SecretNumberGame = ({
 		setInputNumber(Number(event.target.value));
 	};
 
+	/**
+	 * checkWinner
+	 *
+	 * Handles the form submission to check if the user's input matches the secret number.
+	 *
+	 * Workflow:
+	 * 1. Prevents default form submission behavior.
+	 * 2. Validates that an input number has been entered; if not, sets an error.
+	 * 3. Compares the input number to the secret number:
+	 *    - If input is less than secret number, prompts "Higher", decreases a life, and resets input.
+	 *    - If input is greater than secret number, prompts "Lower", decreases a life, and resets input.
+	 *    - If input matches the secret number, toggles the winner state, resets input,
+	 *      and after 6 seconds advances to the next game.
+	 *
+	 * @param {React.FormEvent} event - The form submission event.
+	 * @returns {void}
+	 */
 	const checkWinner = (event) => {
 		event.preventDefault();
 		if (!inputNumber && inputNumber !== 0) return setError("Debes introducir un numero");

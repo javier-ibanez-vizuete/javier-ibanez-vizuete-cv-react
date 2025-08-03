@@ -9,6 +9,26 @@ import { ContactSection } from "../ContactSection/ContactSection";
 import { Footer } from "../Footer/Footer";
 import { getDataFromStorage, saveDataInStorage } from "../../helpers/localStorage/localStorage";
 
+/**
+ * CurriculumTradicional
+ *
+ * Renders the traditional CV view with tabbed navigation for profile, experience,
+ * education, and contact sections. Persists the active tab in localStorage and
+ * allows switching back to the interactive CV or directly to contact.
+ *
+ * @param {Object}   props
+ * @param {Array<Object>}  props.cvData               – Data object containing CV details.
+ * @param {Object}   props.form                        – Form state for contact submissions.
+ * @param {string}   props.error                       – Current error message for the contact form.
+ * @param {() => void} props.onFormSubmit              – Handler invoked on contact form submission.
+ * @param {(id: string) => void} props.onDeleteForm    – Handler for deleting a contact entry.
+ * @param {(event: Event) => void} props.onInputChange – Handler for contact form input changes.
+ * @param {() => void} props.switchToMainScreen        – Callback to switch back to the main interactive view.
+ * @param {boolean}  props.nightMode                   – Flag indicating if dark mode is active.
+ * @param {() => void} props.onToggleNightMode         – Callback to toggle dark/light theme.
+ *
+ * @returns {JSX.Element} The CurriculumTradicional component.
+ */
 export const CurriculumTradicional = ({
 	cvData,
 	form,
