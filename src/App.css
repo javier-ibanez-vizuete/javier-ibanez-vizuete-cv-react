@@ -124,21 +124,60 @@ main {
 	color: var(--primary-text-color-dark);
 }
 
+.app-container.night-mode-active .night-mode {
+	background-color: var(--btn-secondary-color-dark);
+}
+
+.app-container.night-mode-active .profile-section-btn {
+	background-color: var(--btn-primary-color-dark);
+	color: var(--btn-text-color-dark);
+}
+
+.app-container.night-mode-active .profile-section-btn:hover {
+	background-color: var(--btn-primary-color-dark-hover);
+}
+
+.app-container.night-mode-active .skill-list-item {
+	background-color: var(--btn-secondary-color-dark);
+	color: var(--btn-text-color-dark);
+}
+
+.app-container.night-mode-active .progress {
+	stroke: var(--btn-primary-color-dark);
+}
+
+.app-container.night-mode-active .percentage-text {
+	fill: var(--primary-text-color-dark);
+}
+
 .app-container.night-mode-active .tab {
 	background-color: var(--btn-xtra-color-dark);
-	color: var(--secondary-text-color-dark);
+	color: var(--btn-text-color-dark);
 }
 
 .app-container.night-mode-active .tab.active {
-	background-color: var(--btn-primary-color);
+	background-color: var(--btn-primary-color-dark);
+	color: var(--btn-text-color-dark-invert);
 }
 
 .app-container.night-mode-active .tab:hover {
-	background-color: var(--btn-xtra-color-dark);
+	background-color: var(--btn-primary-color-dark-hover);
 }
 
 .app-container.night-mode-active .primary-btn {
-	color: var(--secondary-text-color-dark);
+	color: var(--btn-text-color-dark);
+	background-color: var(--btn-primary-color-dark);
+}
+.app-container.night-mode-active .primary-btn:hover {
+	background-color: var(--btn-primary-color-dark-hover);
+}
+
+.app-container.night-mode-active .secondary-btn {
+	color: var(--btn-text-color-dark);
+	background-color: var(--btn-secondary-color-dark);
+}
+.app-container.night-mode-active .secondary-btn:hover {
+	background-color: var(--btn-secondary-color-dark-hover);
 }
 
 .app-container.night-mode-active .contact-section-label-container input,
@@ -214,6 +253,10 @@ main {
 
 .app-container.night-mode-active .winner-text {
 	color: green;
+}
+
+.app-container.night-mode-active .empty-list-text {
+	color: #888;
 }
 
 /* ---Tablets */
