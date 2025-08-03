@@ -7,6 +7,25 @@ import { FloatingText } from "../FloatingText/FloatingText";
 import { Profile } from "../Profile/Profile";
 import "./CurriculumComplete.css";
 
+/**
+ * CurriculumComplete Component
+ *
+ * This component acts as the main layout for displaying a full interactive CV.
+ * It conditionally renders different sections (Profile, Experience, Education, Contact)
+ * based on the result of associated mini-games (stored in `gameResult`).
+ * If a section is locked ("blocked"), it shows an encrypted placeholder instead.
+ *
+ * Props:
+ * @param {Object} cvData - Contains the CV content such as profile, experiences, and education.
+ * @param {Object} form - Object representing the contact form fields.
+ * @param {string} error - Error message related to the contact form.
+ * @param {Function} onFormSubmit - Callback function to handle form submission.
+ * @param {Function} onInputChange - Callback function to handle input change.
+ * @param {Function} onDeleteForm - Callback function to reset the form.
+ * @param {Object} gameResult - Object with the results of mini-games to conditionally unlock sections.
+ *
+ * @returns {JSX.Element} The CurriculumComplete section with dynamic content.
+ */
 export const CurriculumComplete = ({ cvData, form, error, onFormSubmit, onInputChange, onDeleteForm, gameResult }) => {
 	return (
 		<section className="curriculum-complete-section">

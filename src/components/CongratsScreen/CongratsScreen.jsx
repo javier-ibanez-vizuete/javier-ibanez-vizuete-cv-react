@@ -1,5 +1,14 @@
 import "./CongratsScreen.css";
 
+/**
+ * CongratsScreen Component
+ *
+ * A simple congratulatory screen component that displays a motivational message.
+ * Intended to be used at the end of a process, game, or interactive flow.
+ *
+ * Usage:
+ * <CongratsScreen />
+ */
 export const CongratsScreen = () => {
 	return (
 		<section className="congrats-screen-section">

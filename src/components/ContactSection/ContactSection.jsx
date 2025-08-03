@@ -1,5 +1,25 @@
 import "./ContactSection.css";
 
+/**
+ * ContactSection Component
+ *
+ * Renders a contact form section with fields for user input and interaction.
+ * This component supports dynamic content through the `children` prop and adjusts
+ * its appearance based on the state of an external game result.
+ *
+ * Props:
+ * - children (ReactNode): Optional content to be displayed above the form.
+ * - form (Object): Form state object containing values for all input fields.
+ * - error (string): Error message to be displayed when form validation fails.
+ * - onFormSubmit (Function): Callback function triggered on form submission.
+ * - onDeleteForm (Function): Callback function triggered when the form is cleared.
+ * - onInputChange (Function): Callback for handling input changes.
+ * - gameResult (Object): Object containing game state to conditionally block the form (e.g., { ticTacToe: 'blocked' }).
+ *
+ * Notes:
+ * - Form will be sent using the user's default messaging client.
+ * - All fields are required.
+ */
 export const ContactSection = ({ children, form, error, onFormSubmit, onDeleteForm, onInputChange, gameResult }) => {
 	return (
 		<section className={`contact-section ${gameResult?.ticTacToe}`}>

@@ -18,6 +18,25 @@ import moleSmashedAvif from "../../../../assets/pictures/mole/mole-smashed/mole-
 
 import { FullscreenConfetti } from "../../../FullscreenConfetti/FullscreenConfetti";
 
+/**
+ * MoleSmasherGame
+ *
+ * Renders the “Whack-a-Mole” game interface, showing either a start screen
+ * or the active game board with counters, holes, moles, and win state.
+ *
+ * @param {Object} props
+ * @param {boolean} props.startGame             – Flag indicating if the game has started.
+ * @param {number}  props.gameNumber            – Identifier for the current game session.
+ * @param {() => void} props.handleStartGame    – Callback to initiate the game.
+ * @param {number}  props.lives                 – Remaining lives or attempts.
+ * @param {number}  props.moles                 – Count of moles smashed so far.
+ * @param {Array<Object>} props.moleHoles       – Array of hole objects with shape `{ hasMole: boolean, isSmashed: boolean }`.
+ * @param {boolean} props.winner                – Indicates if the player has won the game.
+ * @param {(index: number) => void} props.handleMoleClick
+ *                                                – Callback fired when a hole is clicked (index of the hole).
+ *
+ * @returns {JSX.Element} The MoleSmasherGame component.
+ */
 export const MoleSmasherGame = ({
 	startGame,
 	gameNumber,
@@ -28,8 +47,6 @@ export const MoleSmasherGame = ({
 	winner,
 	handleMoleClick,
 }) => {
-	
-	
 	if (!startGame) return <GameExplanation gameNumber={gameNumber} handleStartGame={handleStartGame} lives={lives} />;
 
 	return (
