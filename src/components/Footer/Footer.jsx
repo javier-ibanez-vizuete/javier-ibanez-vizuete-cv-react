@@ -1,4 +1,3 @@
-import { removeFromStorage } from "../../helpers/localStorage/localStorage";
 import { AppTabs } from "../CvSelector/AppTabs";
 import { Tabs } from "../Navigation/Tabs";
 import { NightMode } from "../NightMode/NightMode";
