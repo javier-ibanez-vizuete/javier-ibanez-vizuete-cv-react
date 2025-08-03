@@ -147,16 +147,73 @@ main {
 	border-color: var(--primary-text-color-dark);
 }
 
+/* -------------GAMES---------- */
+
+.app-container.night-mode-active .hangman-body-piece > div {
+	background-color: var(--primary-text-color-dark);
+}
+
+.app-container.night-mode-active .head > div {
+	background-color: transparent;
+	border-color: var(--primary-text-color-dark);
+}
+
+.app-container.night-mode-active .secret-word-box {
+	border-color: var(--primary-text-color-dark);
+}
+
+.app-container.night-mode-active .hangman-keyboard-display > button {
+	background-color: var(--btn-secondary-color);
+}
+
+.app-container.night-mode-active .mole-smasher-counter-container {
+	border-color: var(--primary-text-color-dark);
+}
+
+.app-container.night-mode-active .hole-box {
+	border-color: var(--primary-text-color-dark);
+}
+
+.app-container.night-mode-active .tic-tac-toe-board-container > .square-tic-tac.full-square {
+	background-color: var(--primary-text-color-dark);
+}
+
+.app-container.night-mode-active .tic-tac-toe-board-container > .square-tic-tac.full-square > span {
+	color: var(--secondary-text-color-dark);
+}
+
+.app-container.night-mode-active .square-tic-tac {
+	border-color: var(--primary-text-color-dark);
+}
+
+.app-container.night-mode-active .square-tic-tac.is-selected {
+	background-color: var(--btn-secondary-color);
+}
+
+.app-container.night-mode-active .square-tic-tac.is-selected > span {
+	color: var(--primary-text-color-dark);
+}
+
+/* ------/-GAMES--------- */
+
 .app-container.night-mode-active .floating-text.result-passed {
 	color: rgba(0, 128, 0, 0.5);
 }
 
 .app-container.night-mode-active .floating-text.result-surrendered {
-		color: rgba(255, 0, 0, 0.3);
+	color: rgba(255, 0, 0, 0.3);
 }
 
 .app-container.night-mode-active .divisor-line {
 	background-color: var(--primary-text-color-dark);
+}
+
+.app-container.night-mode-active .error-text {
+	color: rgb(227, 19, 19);
+}
+
+.app-container.night-mode-active .winner-text {
+	color: green;
 }
 
 /* ---Tablets */

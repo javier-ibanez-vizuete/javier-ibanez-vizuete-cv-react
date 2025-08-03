@@ -4,7 +4,7 @@
 }
 
 .hangman-body-piece > div {
-	background-color: #888;
+	background-color: var(--primary-text-color);
 	flex: 1;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .head > div {
-	border: 1px solid black;
+	border: 1px solid var(--primary-text-color);
 	border-radius: 50%;
 	background-color: transparent;
 }
