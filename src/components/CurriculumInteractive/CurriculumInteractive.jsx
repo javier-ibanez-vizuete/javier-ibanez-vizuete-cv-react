@@ -398,6 +398,11 @@ export const CurriculumInteractive = ({
 
 		removeFromStorage("moles");
 		setMoles(0);
+
+		saveDataInStorage("game_result", INITIAL_GAME_RESULT_STATES);
+		setGameResult(INITIAL_GAME_RESULT_STATES);
+
+		switchToGames();
 	};
 
 	/**
@@ -828,6 +833,7 @@ export const CurriculumInteractive = ({
 				{activeTab === cvInteractiveTabs.GAMES && gameNumber < 5 && (
 					<Button className={"btn primary-btn"} bodyText={"Rendirse"} handleButton={handleSurrenderButton} />
 				)}
+				<Button className={"btn primary-btn"} bodyText={"Reiniciar Juegos"} handleButton={handleRestartGame} />
 			</Footer>
 		</div>
 	);
