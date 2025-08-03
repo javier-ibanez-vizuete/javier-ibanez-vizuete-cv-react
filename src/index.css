@@ -2,18 +2,26 @@
 	--bg-color: #deded9;
 	--primary-text-color: #003243;
 	--secondary-text-color: #ffffff;
-	--links-text-color: #ff4400;
 
-	--bg-color-dark: #474545;
-	--primary-text-color-dark: #ffffff;
-	--secondary-text-color-dark: #003243;
-	--btn-xtra-color-dark: #888;
+	--bg-color-dark: #1e1e1e;
+	--primary-text-color-dark: #e2e2e2;
+	--secondary-text-color-dark: #739fad;
+
+	--btn-xtra-color-dark: rgba(255, 255, 255, 0.1);
 
 	--btn-primary-color: #ff4400;
 	--btn-primary-color-hover: #eb4306;
 	--btn-secondary-color: #003243;
 	--btn-secondary-color-hover: #00212e;
 	--btn-xtra-color: rgba(0, 50, 67, 0.2);
+
+	--btn-text-color-dark: #ffffff;
+	--btn-text-color-dark-invert: #003243;
+
+	--btn-primary-color-dark: #ff5a2f;
+	--btn-primary-color-dark-hover: #ff3e14;
+	--btn-secondary-color-dark: #2a8a99;
+	--btn-secondary-color-dark-hover: #1d6c7a;
 
 	--shadow-soft: 0 0px 10px rgba(0, 0, 0, 0.2);
 	--shadow-hover: 0 0px 14px rgba(0, 0, 0, 0.4);
@@ -22,7 +30,8 @@
 	--font-family: "Roboto", "Poppins", Helvetica, "bodyfont", "doggyfont", "cattyfont", "bunnyfont", -apple-system,
 		BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 		"Segoe UI Symbol";
-	--font-weight-bold: 800;
+		/* font-weight queda pendiente de aplicar */
+	--font-weight-bold: 800; 
 	--font-weight-normal: 500;
 
 	--spacing-xs: 4px;
@@ -33,7 +42,6 @@
 	--spacing-4xl: 60px;
 
 	--border-radius-card: 4px;
-	--border-radius-btn: 1000px;
 
 	--container-width: 90%;
 }
