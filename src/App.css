@@ -58,7 +58,7 @@ header {
 	border-radius: var(--border-radius-card);
 	box-shadow: inset var(--shadow-soft);
 	transition-duration: 0.2s;
-	font-weight: bold;
+	font-weight: var(--font-weight-bold);
 }
 
 .primary-btn {
@@ -73,7 +73,7 @@ header {
 
 /* ----Texto para error de formulario/ juegos---- */
 .error-text {
-	font-weight: bolder;
+	font-weight: var(--font-weight-bold);
 	color: red;
 }
 
@@ -87,7 +87,7 @@ header {
 	text-align: center;
 	align-self: center;
 	color: green;
-	font-weight: bolder;
+	font-weight: var(--font-weight-bold);
 }
 
 main {
