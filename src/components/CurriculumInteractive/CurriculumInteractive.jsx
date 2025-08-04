@@ -388,9 +388,17 @@ export const CurriculumInteractive = ({
 		removeFromStorage("is_game_started");
 		setStartGame(false);
 
+		let secretWord;
 		setLongWord(() => {
-			removeFromStorage("long_word");
-			return getRandomWord();
+			const randomWord = getRandomWord();
+			saveDataInStorage("long_word", randomWord);
+			secretWord = createSecretWord(randomWord);
+			return randomWord;
+		});
+
+		setSecretWord(() => {
+			saveDataInStorage("secret_word", secretWord);
+			return secretWord;
 		});
 
 		removeFromStorage("mole_holes");
