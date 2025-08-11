@@ -186,7 +186,11 @@ export const App = () => {
 				return "Rellene el campo Descripcion adicional";
 			});
 
-		const mailToLink = `mailto: ${cvData.personalInfo.email}?subject=${contactName} from ${companyName} - [${contactReason}]?body=${contactDescription}`;
+		const email = (cvData.personalInfo.email || "").trim();
+		const subject = `${contactName} from ${companyName} - [${contactReason}]`;
+		const body = contactDescription.replace(/\n/g, "\r\n");
+
+		const mailToLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
 		const temporalAnchor = document.createElement("a");
 		temporalAnchor.style.display = "none";
