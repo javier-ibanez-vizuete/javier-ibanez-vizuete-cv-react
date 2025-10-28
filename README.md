@@ -133,6 +133,3 @@ _Favicon_ - Curriculum favicon
 
 -   https://github.com/javier-ibanez-vizuete/javier-ibanez-vizuete-cv-react.git
 
-```
-
-```
