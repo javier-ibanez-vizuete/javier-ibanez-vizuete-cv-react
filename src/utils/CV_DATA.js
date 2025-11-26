@@ -13,7 +13,7 @@ export const CV_DATA = {
 		{
 			position: "Frontend Developer",
 			company: "Rocket418",
-			period: "Diciembre 2024 - Actualidad",
+			period: "Abr 2023 - Actualidad",
 			location: "Madrid, España",
 			responsabilities: [
 				"Desarrollo de la interfaz de usuario para el proyecto UniformeAzul.com , la academia más grande de España para opositores a la Policía.",
@@ -27,7 +27,7 @@ export const CV_DATA = {
 		{
 			position: "Director",
 			company: "Restaurante SAONA",
-			period: "oct 2020 - mar 2024",
+			period: "oct 2019 - abr 2023",
 			location: "Madrid, España",
 			responsabilities: [
 				"Supervisión de un equipo de 22 personas (camareros y cocineros) en el restaurante SAONA Plaza de España.",
@@ -40,7 +40,7 @@ export const CV_DATA = {
 		{
 			position: "Supervisor",
 			company: "Forge Restaurant & Club",
-			period: "sep 2017 - jun 2018",
+			period: "sep 2017 - jun 2019",
 			location: "Londres, Reino Unido",
 			responsabilities: [
 				"Liderazgo de personal en restaurante y discoteca, asegurando altos estándares de atención y servicio.",
@@ -55,7 +55,7 @@ export const CV_DATA = {
 		{
 			degree: "Máster en Programación Web, Inteligencia Artificial y Desarrollo Mobile",
 			institution: "Eleven Code School",
-			period: "abr 2024 - Actualidad",
+			period: "abr 2024 - jul 2025",
 		},
 	],
 	skills: [
