@@ -13,7 +13,7 @@ export const CV_DATA = {
 		{
 			position: "Frontend Developer",
 			company: "Rocket418",
-			period: "Abr 2020 - Actualidad",
+			period: "Abr 2020 - Ene 2026",
 			location: "Madrid, España",
 			responsabilities: [
 				"Desarrollo de la interfaz de usuario para el proyecto UniformeAzul.com , la academia más grande de España para opositores a la Policía.",
@@ -55,7 +55,7 @@ export const CV_DATA = {
 		{
 			degree: "Máster en Programación Web, Inteligencia Artificial y Desarrollo Mobile",
 			institution: "Eleven Code School",
-			period: "abr 2024 - jul 2025",
+			period: "abr 2020 - jul 2025",
 		},
 	],
 	skills: [
